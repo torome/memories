@@ -1,4 +1,7 @@
-fragment
+Memories
 ========
 
-fragment
+An android app build for beautiful memories.
+
+
+JaronTai - dbzard@gmail.com
