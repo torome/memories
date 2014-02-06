@@ -1,5 +1,6 @@
 package com.jarontai.android.memories;
 
+import android.accounts.OnAccountsUpdateListener;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.Editable;
@@ -7,12 +8,18 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.EditText;
 
 public class MemoFragment extends Fragment {
 	
 	private Memo memo;
 	private EditText memoTitle;
+	private Button dateButton;
+	private CheckBox starCheckBox;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -44,6 +51,19 @@ public class MemoFragment extends Fragment {
 			}
 			
 		});
+		
+		dateButton = (Button) v.findViewById(R.id.memoDate);
+		dateButton.setText(memo.getDate().toString());
+		dateButton.setEnabled(false);
+		
+		starCheckBox = (CheckBox) v.findViewById(R.id.starSelected);
+		starCheckBox.setOnCheckedChangeListener(new OnCheckedChangeListener() {			
+			@Override
+			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+				memo.setStar(isChecked);				
+			}
+		});
+		
 		return v;
 	}
 	
