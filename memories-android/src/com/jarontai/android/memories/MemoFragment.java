@@ -1,5 +1,7 @@
 package com.jarontai.android.memories;
 
+import com.jarontai.android.memories.model.Memo;
+
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.Editable;

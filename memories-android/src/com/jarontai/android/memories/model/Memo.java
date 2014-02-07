@@ -1,4 +1,4 @@
-package com.jarontai.android.memories;
+package com.jarontai.android.memories.model;
 
 import java.util.Date;
 import java.util.UUID;

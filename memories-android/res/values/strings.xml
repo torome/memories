@@ -7,5 +7,6 @@
 	<string name="memo_title_label">Title</string>
 	<string name="memo_details_label">Details</string>
 	<string name="star_checkbox_label">Star?</string>
+	<string name="memos_title">Memos</string>
 	
 </resources>
