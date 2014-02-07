@@ -1,5 +1,8 @@
-package com.jarontai.android.memories;
+package com.jarontai.android.memories.fragment;
 
+import com.jarontai.android.memories.R;
+import com.jarontai.android.memories.R.id;
+import com.jarontai.android.memories.R.layout;
 import com.jarontai.android.memories.model.Memo;
 
 import android.os.Bundle;

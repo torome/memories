@@ -1,10 +1,12 @@
-package com.jarontai.android.memories;
+package com.jarontai.android.memories.fragment;
 
 import java.util.ArrayList;
 
 import android.os.Bundle;
 import android.support.v4.app.ListFragment;
 
+import com.jarontai.android.memories.R;
+import com.jarontai.android.memories.R.string;
 import com.jarontai.android.memories.model.Memo;
 import com.jarontai.android.memories.model.MemoBox;
 
