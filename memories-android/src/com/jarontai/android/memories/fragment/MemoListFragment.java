@@ -1,13 +1,18 @@
 package com.jarontai.android.memories.fragment;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Locale;
 
 import android.os.Bundle;
 import android.support.v4.app.ListFragment;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.CheckBox;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.jarontai.android.memories.R;
 import com.jarontai.android.memories.model.Memo;
@@ -16,6 +21,7 @@ import com.jarontai.android.memories.model.MemoBox;
 public class MemoListFragment extends ListFragment {
 	private ArrayList<Memo> memos;
 	private static final String TAG = "MemoListFragment";
+	private static final SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.CHINA);   	
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -23,15 +29,42 @@ public class MemoListFragment extends ListFragment {
 		getActivity().setTitle(R.string.memos_title);
 		memos = MemoBox.get(getActivity()).getMemos();
 		
-		ArrayAdapter<Memo> adapter = new ArrayAdapter<Memo>(getActivity(), android.R.layout.simple_list_item_1, memos);
+		MemoAdapter adapter = new MemoAdapter(memos);
 		setListAdapter(adapter);
 	}
 
 	@Override
 	public void onListItemClick(ListView l, View v, int position, long id) {
-		Memo m = (Memo) getListAdapter().getItem(position);
+		Memo m = ((MemoAdapter) getListAdapter()).getItem(position);
 		Log.d(TAG, m.getTitle() + " was clicked!");
 	}
 
-	
+
+	private class MemoAdapter extends ArrayAdapter<Memo> {
+
+		public MemoAdapter(ArrayList<Memo> memos) {
+			super(getActivity(), 0, memos);
+		}
+
+		@Override
+		public View getView(int position, View convertView, ViewGroup parent) {
+			if (convertView == null) {
+				convertView = getActivity().getLayoutInflater()
+						.inflate(R.layout.list_item_memo, null);
+			}
+			
+			Memo m = getItem(position);
+			
+			TextView title = (TextView) convertView.findViewById(R.id.memo_list_item_titleTextView);
+			title.setText(m.getTitle());
+			TextView date = (TextView) convertView.findViewById(R.id.memo_list_item_dateTextView);
+			date.setText(sdf.format(m.getDate()));
+			CheckBox starCheckBox = (CheckBox) convertView.findViewById(R.id.memo_list_item_starCheckBox);
+			starCheckBox.setChecked(m.isStar());
+			
+			return convertView;
+		}
+		
+		
+	}
 }
