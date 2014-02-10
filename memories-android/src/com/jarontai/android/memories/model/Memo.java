@@ -38,5 +38,10 @@ public class Memo {
 	public Date getDate() {
 		return date;
 	}
+
+	@Override
+	public String toString() {
+		return title;
+	}
 		
 }
