@@ -22,7 +22,7 @@
             </intent-filter>
         </activity>        
         <activity
-            android:name="com.jarontai.android.memories.activity.MemoActivity"
+            android:name="com.jarontai.android.memories.activity.MemoPagerActivity"
             android:label="@string/app_name" >
         </activity>
     </application>

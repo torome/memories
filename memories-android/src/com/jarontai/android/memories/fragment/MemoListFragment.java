@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 import com.jarontai.android.memories.R;
 import com.jarontai.android.memories.activity.MemoActivity;
+import com.jarontai.android.memories.activity.MemoPagerActivity;
 import com.jarontai.android.memories.model.Constant;
 import com.jarontai.android.memories.model.Memo;
 import com.jarontai.android.memories.model.MemoBox;
@@ -37,9 +38,9 @@ public class MemoListFragment extends ListFragment {
 	public void onListItemClick(ListView l, View v, int position, long id) {
 		Memo m = ((MemoAdapter) getListAdapter()).getItem(position);
 		
-		// When memo item clicked, start intent for memo details
+		// When memo item clicked, start pager activity
 		Log.d(MemoListFragment.class.getName(), "memo " + m.getId() + " clicked!");
-		Intent intent = new Intent(getActivity(), MemoActivity.class);
+		Intent intent = new Intent(getActivity(), MemoPagerActivity.class);
 		intent.putExtra(Constant.EXTRA_MEMO_ID, m.getId());
 		startActivity(intent);
 	}
