@@ -1,15 +1,13 @@
 package com.jarontai.android.memories.activity;
 
-import com.jarontai.android.memories.R;
-import com.jarontai.android.memories.R.id;
-import com.jarontai.android.memories.R.layout;
-
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 
-public abstract class SingleFragmentActivity extends FragmentActivity {
+import com.jarontai.android.memories.R;
+
+public abstract class AbstractFragmentActivity extends FragmentActivity {
 	protected abstract Fragment createFragment();
 
 	@Override
