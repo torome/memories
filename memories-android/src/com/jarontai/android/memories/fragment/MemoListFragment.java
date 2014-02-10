@@ -1,8 +1,6 @@
 package com.jarontai.android.memories.fragment;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Locale;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -23,7 +21,7 @@ import com.jarontai.android.memories.model.MemoBox;
 
 public class MemoListFragment extends ListFragment {
 	private ArrayList<Memo> memos;
-	private static final SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.CHINA);   	
+
 		
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -46,6 +44,18 @@ public class MemoListFragment extends ListFragment {
 		startActivity(intent);
 	}
 
+	@Override
+	public void onActivityResult(int requestCode, int resultCode, Intent data) {
+		if (requestCode == Constant.MEMO_REQUEST) {
+			
+		}
+	}
+
+	@Override
+	public void onResume() {
+		super.onResume();
+		((MemoAdapter)getListAdapter()).notifyDataSetChanged();
+	}
 
 	private class MemoAdapter extends ArrayAdapter<Memo> {
 
@@ -65,7 +75,7 @@ public class MemoListFragment extends ListFragment {
 			TextView title = (TextView) convertView.findViewById(R.id.memo_list_item_titleTextView);
 			title.setText(m.getTitle());
 			TextView date = (TextView) convertView.findViewById(R.id.memo_list_item_dateTextView);
-			date.setText(sdf.format(m.getDate()));
+			date.setText(Constant.sdf.format(m.getDate()));
 			CheckBox starCheckBox = (CheckBox) convertView.findViewById(R.id.memo_list_item_starCheckBox);
 			starCheckBox.setChecked(m.isStar());
 			

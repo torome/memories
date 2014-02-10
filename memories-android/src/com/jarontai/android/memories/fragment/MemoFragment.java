@@ -27,10 +27,19 @@ public class MemoFragment extends Fragment {
 	private Button dateButton;
 	private CheckBox starCheckBox;
 
+	public static MemoFragment newInstance(UUID memoId) {
+		Bundle args = new Bundle();
+		args.putSerializable(Constant.EXTRA_MEMO_ID, memoId);
+		
+		MemoFragment fragment = new MemoFragment();
+		fragment.setArguments(args);		
+		return fragment;
+	}
+	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		UUID mId = (UUID) getActivity().getIntent().getSerializableExtra(Constant.EXTRA_MEMO_ID);
+		UUID mId = (UUID) getArguments().getSerializable(Constant.EXTRA_MEMO_ID);
 		memo = MemoBox.get(getActivity()).getMemo(mId);
 	}
 
@@ -61,7 +70,7 @@ public class MemoFragment extends Fragment {
 		});
 		
 		dateButton = (Button) v.findViewById(R.id.memoDate);
-		dateButton.setText(memo.getDate().toString());
+		dateButton.setText(Constant.sdf.format(memo.getDate()));
 		dateButton.setEnabled(false);
 		
 		starCheckBox = (CheckBox) v.findViewById(R.id.starSelected);
