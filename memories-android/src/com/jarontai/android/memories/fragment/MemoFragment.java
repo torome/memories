@@ -1,9 +1,6 @@
 package com.jarontai.android.memories.fragment;
 
-import com.jarontai.android.memories.R;
-import com.jarontai.android.memories.R.id;
-import com.jarontai.android.memories.R.layout;
-import com.jarontai.android.memories.model.Memo;
+import java.util.UUID;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -18,6 +15,11 @@ import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.EditText;
 
+import com.jarontai.android.memories.R;
+import com.jarontai.android.memories.model.Constant;
+import com.jarontai.android.memories.model.Memo;
+import com.jarontai.android.memories.model.MemoBox;
+
 public class MemoFragment extends Fragment {
 	
 	private Memo memo;
@@ -28,7 +30,8 @@ public class MemoFragment extends Fragment {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		memo = new Memo();
+		UUID mId = (UUID) getActivity().getIntent().getSerializableExtra(Constant.EXTRA_MEMO_ID);
+		memo = MemoBox.get(getActivity()).getMemo(mId);
 	}
 
 	@Override
@@ -37,6 +40,7 @@ public class MemoFragment extends Fragment {
 		View v = inflater.inflate(R.layout.fragment_memo, container, false);
 		
 		memoTitle = (EditText) v.findViewById(R.id.memoTitle);
+		memoTitle.setText(memo.getTitle());
 		memoTitle.addTextChangedListener(new TextWatcher() {
 
 			@Override
@@ -61,6 +65,7 @@ public class MemoFragment extends Fragment {
 		dateButton.setEnabled(false);
 		
 		starCheckBox = (CheckBox) v.findViewById(R.id.starSelected);
+		starCheckBox.setChecked(memo.isStar());
 		starCheckBox.setOnCheckedChangeListener(new OnCheckedChangeListener() {			
 			@Override
 			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {

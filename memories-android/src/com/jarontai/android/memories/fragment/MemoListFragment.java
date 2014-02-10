@@ -4,6 +4,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Locale;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.ListFragment;
 import android.util.Log;
@@ -15,14 +16,15 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.jarontai.android.memories.R;
+import com.jarontai.android.memories.activity.MemoActivity;
+import com.jarontai.android.memories.model.Constant;
 import com.jarontai.android.memories.model.Memo;
 import com.jarontai.android.memories.model.MemoBox;
 
 public class MemoListFragment extends ListFragment {
 	private ArrayList<Memo> memos;
-	private static final String TAG = "MemoListFragment";
 	private static final SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.CHINA);   	
-	
+		
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -36,7 +38,12 @@ public class MemoListFragment extends ListFragment {
 	@Override
 	public void onListItemClick(ListView l, View v, int position, long id) {
 		Memo m = ((MemoAdapter) getListAdapter()).getItem(position);
-		Log.d(TAG, m.getTitle() + " was clicked!");
+		
+		// When memo item clicked, start intent for memo details
+		Log.d(MemoListFragment.class.getName(), "memo " + m.getId() + " clicked!");
+		Intent intent = new Intent(getActivity(), MemoActivity.class);
+		intent.putExtra(Constant.EXTRA_MEMO_ID, m.getId());
+		startActivity(intent);
 	}
 
 
@@ -54,7 +61,7 @@ public class MemoListFragment extends ListFragment {
 			}
 			
 			Memo m = getItem(position);
-			
+			// fill memo item content
 			TextView title = (TextView) convertView.findViewById(R.id.memo_list_item_titleTextView);
 			title.setText(m.getTitle());
 			TextView date = (TextView) convertView.findViewById(R.id.memo_list_item_dateTextView);
