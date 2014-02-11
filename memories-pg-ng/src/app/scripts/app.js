@@ -1,11 +1,6 @@
 'use strict';
 
-angular.module('srcApp', [
-  'ngCookies',
-  'ngResource',
-  'ngSanitize',
-  'ngRoute'
-])
+angular.module('srcApp', ['ngCookies', 'ngResource', 'ngSanitize', 'ngRoute', 'ngTouch', 'onsen.directives'])
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {
