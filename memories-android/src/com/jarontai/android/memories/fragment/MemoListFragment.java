@@ -47,7 +47,7 @@ public class MemoListFragment extends ListFragment {
 
 	@Override
 	public void onActivityResult(int requestCode, int resultCode, Intent data) {
-		if (requestCode == Constant.MEMO_REQUEST) {
+		if (requestCode == Constant.REQUEST_MEMO) {
 			
 		}
 	}

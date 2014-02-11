@@ -38,6 +38,10 @@ public class Memo {
 	public Date getDate() {
 		return date;
 	}
+	
+	public void setDate(Date date) {
+		this.date = date;
+	}
 
 	@Override
 	public String toString() {

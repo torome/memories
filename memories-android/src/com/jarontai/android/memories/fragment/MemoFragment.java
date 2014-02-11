@@ -1,9 +1,13 @@
 package com.jarontai.android.memories.fragment;
 
+import java.util.Date;
 import java.util.UUID;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
@@ -70,8 +74,17 @@ public class MemoFragment extends Fragment {
 		});
 		
 		dateButton = (Button) v.findViewById(R.id.memoDate);
-		dateButton.setText(Constant.sdf.format(memo.getDate()));
-		dateButton.setEnabled(false);
+		UpdateDateBtn();
+		dateButton.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View arg0) {
+				FragmentManager fm = getActivity().getSupportFragmentManager();
+				DatePickerFragment dialog = DatePickerFragment.newInstance(memo.getDate());
+				dialog.setTargetFragment(MemoFragment.this, Constant.REQUEST_DATE);
+				dialog.show(fm, "datePicker");
+			}
+		});
 		
 		starCheckBox = (CheckBox) v.findViewById(R.id.starSelected);
 		starCheckBox.setChecked(memo.isStar());
@@ -84,6 +97,21 @@ public class MemoFragment extends Fragment {
 		
 		return v;
 	}
+
+	@Override
+	public void onActivityResult(int requestCode, int resultCode, Intent data) {
+		if (resultCode != Activity.RESULT_OK) {
+			return;
+		}
+		
+		if (requestCode == Constant.REQUEST_DATE) {
+			Date date = (Date) data.getSerializableExtra(Constant.EXTRA_DATE);
+			memo.setDate(date);
+			UpdateDateBtn();
+		}
+	}
 	
-	
+	private void UpdateDateBtn() {
+		dateButton.setText(Constant.sdf.format(memo.getDate()));
+	}
 }
