@@ -1,7 +1,7 @@
 Memories
 ========
 
-An android app build for beautiful memories.
+An app for the comparison between native and phonegap/cordova.
 
 
-JaronTai - dbzard@gmail.com
+JaronTai - jaroncn@gmail.com
