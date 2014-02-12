@@ -1,20 +1,27 @@
 <ons-page>
 	<ul class="fa-ul">
-
 		<ons-list-item 
 			class="topcoat-list__item_active"
 			ng-click="ons.slidingMenu.toggleMenu(); 
-			ons.slidingMenu.setAbovePage('views/navigator1.html')">
+			ons.slidingMenu.setAbovePage('views/main.html')">
 			<i class="fa-li fa fa-home fa-lg" style="top: 25%"></i>
-			Page 1
+			主页
 		</ons-list-item>
 
 		<ons-list-item 
 			class="topcoat-list__item_active"
 			ng-click="ons.slidingMenu.toggleMenu(); 
-			ons.slidingMenu.setAbovePage('views/navigator2.html')">
+			ons.slidingMenu.setAbovePage('views/camera.html')">
+			<i class="fa-li fa fa-camera fa-lg" style="top: 25%"></i>
+			拍照
+		</ons-list-item>
+
+		<ons-list-item 
+			class="topcoat-list__item_active"
+			ng-click="ons.slidingMenu.toggleMenu(); 
+			ons.slidingMenu.setAbovePage('views/config.html')">
 			<i class="fa-li fa fa-gear fa-lg" style="top: 25%"></i>
-			Page 2
+			设置
 		</ons-list-item>
 
 	</ul>
