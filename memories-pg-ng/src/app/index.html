@@ -19,27 +19,7 @@
     <!-- endbuild -->
     <link rel="stylesheet" href="lib/onsen/css/onsenui.css">
     <link rel="stylesheet" href="lib/onsen/css/topcoat-mobile-light.min.css">
-
-    <script type="text/javascript" charset="utf-8">
-    (function() {
-      // Wait for device API libraries to load
-      document.addEventListener("deviceready", onDeviceReady, false);
-
-      // device APIs are available
-      function onDeviceReady() {
-        setTimeout(function() {
-          navigator.splashscreen.hide();
-        }, 2000);
-      }
-
-      document.addEventListener("touchstart", function(e){ onStart(e); }, false );
-      function onStart ( touchEvent ) {
-        if( device.platform == 'Android' ) {
-          touchEvent.preventDefault();
-        }
-      }
-    })();
-    </script>
+    <script src="scripts/boot.js"></script>
 
   </head>
   <body ng-app="memoriesApp">
@@ -59,10 +39,10 @@
     <script src="bower_components/angular-cookies/angular-cookies.js"></script>
     <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
     <script src="bower_components/angular-route/angular-route.js"></script>
-    <script src="bower_components/lawnchair/src/Lawnchair.js"></script>
-    <script src="bower_components/lawnchair/src/adapters/dom.js"></script>
     <!-- endbuild -->
 
+    <script src="lib/lawnchair/src/Lawnchair.js"></script>
+    <script src="lib/lawnchair/src/adapters/dom.js"></script>
     <script src="lib/onsen/js/onsenui.js"></script>
 
     <!-- build:js({.tmp,app}) scripts/scripts.js -->
@@ -70,6 +50,7 @@
     <script src="scripts/controllers/main.js"></script>
     <script src="scripts/controllers/menu.js"></script>
     <script src="scripts/services/cameraService.js"></script>
+    <script src="scripts/services/storeService.js"></script>
     <!-- endbuild -->
 </body>
 </html>

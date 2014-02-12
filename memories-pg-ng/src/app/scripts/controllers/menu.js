@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('memoriesApp')
-  .controller('MenuCtrl', function ($scope, $log, cameraService) {
+  .controller('MenuCtrl', function ($scope, $log, cameraService, storeService) {
     $scope.data = {};
     $scope.fn = {};
 
@@ -12,6 +12,7 @@ angular.module('memoriesApp')
     		} else {
     			$log.log("Take photo error!" + data);
     		}
+            storeService.addPhoto(data);
     	});
     }
   });
