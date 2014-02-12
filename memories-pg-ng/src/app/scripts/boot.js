@@ -7,6 +7,8 @@
     setTimeout(function() {
       navigator.splashscreen.hide();
     }, 2000);
+
+    angular.bootstrap(document, ['memoriesApp']);
   }
 
   // try to fix android's 'miss a drag' bug 

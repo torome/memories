@@ -3,7 +3,7 @@
 angular.module('memoriesApp')
   .service('storeService', function storeService() {
 
-	var photoList = Lawnchair({name:'photoList', record:'photo'});
+	var photoList = new Lawnchair({name:'photoList', record:'photo'}, function() {});
 
  	function _addPhoto(imageURI, callback) {
 		if (imageURI) {
