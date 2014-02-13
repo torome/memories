@@ -22,7 +22,7 @@
   // process back button
   document.addEventListener("backbutton", onBackKey, false);
   function onBackKey(e) {
-    var r = window.confirm("È·¶¨ÒªÍË³ö³ÌĞò?");
+    var r = window.confirm("ç¡®å®šè¦é€€å‡ºç¨‹åº?");
     if (r) {
         e.preventDefault();
         navigator.app.exitApp();
