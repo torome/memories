@@ -1,25 +1,28 @@
 'use strict';
 
 angular.module('memoriesApp')
-  .controller('MainCtrl', function ($scope, $log, storeFactory) {
+  .controller('MainCtrl', function ($scope, $log, $timeout, photoService, storeFactory) {
     $scope.data = {};
     $scope.fn = {};
 
-    var photoStore = storeFactory.getStore('photo');
-
-    photoStore.getList(function(err, data) {
-    	if (!err) {
-    		$scope.data.photoList = data;
-    		$log.log("get photo list: " + angular.toJson(data));
-    	}
-    });
+    $scope.data.menuTip = "向右滑动或点击左上角按钮打开菜单."
+    $scope.data.emptyInfo = "照片列表为空，请赶快去拍照吧!";
     
-    $scope.data.menuTip = "鍚戝彸婊戝姩鎴栫偣鍑诲乏涓婅鎸夐挳鎵撳紑鑿滃崟."
-    $scope.data.emptyInfo = "鐓х墖鍒楄〃涓虹┖锛岃璧跺揩鍘绘媿鐓у惂!";
+    var photoStore = storeFactory.getStore('photo');
+    photoStore.getList(function(err, list) {
+        if (err) return;
+        $scope.data.photoList = list;
+        $log.log("get photo list: " + angular.toJson(list));
+    });    
 
     $scope.fn.isEmpty = function() {
-    	var list = $scope.data.photoList;
-    	return !list || !list.length;
+        var list = $scope.data.photoList;
+        return !list || !list.length;
+    };    
+
+    $scope.fn.getThumbail = function(index) {
+        var image = $scope.data.photoList && $scope.data.photoList[index];
+        return image && image.data.uri;
     };
 
   });

@@ -1,9 +1,9 @@
 'use strict';
 
 angular.module('memoriesApp')
-  .service('cameraService', function cameraService() {
+  .service('photoService', function photoService() {
 
-	this.takePhoto = function (callback) {
+	this.takePhoto = function(callback) {
 		navigator.camera.getPicture(
 			function(imageURI) {
 				callback(null, imageURI);

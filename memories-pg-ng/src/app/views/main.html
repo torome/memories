@@ -1,20 +1,22 @@
-<div ng-controller="MainCtrl">
-	<ons-page class="center">
+<div id="mainPage" ng-controller="MainCtrl">
+	<ons-page class="center main">
 		<!-- <h3>Home</h3> -->
 		<br>
 		<br>
 		<h3 ng-show="fn.isEmpty()">{{data.emptyInfo}}</h3>
 		<p ng-hide="fn.isEmpty()">
 			<ul>
-				<li ng-repeat="photo in data.photoList">{{photo.id}}</li>
+				<li ng-repeat="photo in data.photoList">{{photo.id}} &nbsp; {{fn.getThumbail($index)}}
+					<img ng-src="{{fn.getThumbail($index)}}">
+				</li>
 			</ul>
 		</p>
 		<br>
 		<br>
 		<br>
 		<br>
-		<p>{{data.menuTip}}</p>
-		<img src="images/ico_swipe_right_s.png" alt="">
+		<p ng-show="fn.isEmpty()">{{data.menuTip}}</p>
+		<img ng-show="fn.isEmpty()" src="images/ico_swipe_right_s.png" alt="">
 
 	</ons-page>
 </div>
