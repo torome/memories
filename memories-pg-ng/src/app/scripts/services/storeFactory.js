@@ -11,6 +11,7 @@ angular.module('memoriesApp')
 		this.keys = _.map(this.list, function(item) {
 			return item.id;
 		});
+		this.cleanup = null;
 	}
 
 	Store.prototype._sync = function() {
@@ -18,12 +19,15 @@ angular.module('memoriesApp')
 		window.localStorage.setItem(this.name, value);
 	};
 
- 	Store.prototype.add = function(photo, callback) {
- 		if (angular.isObject(photo)) {
+ 	Store.prototype.add = function(data, callback) {
+ 		if (angular.isObject(data)) {
  			var key = this.name + this.index;
- 			this.list.push({'id':key, 'data': photo});
+ 			this.list.push({'id':key, 'data': data});
  			this._sync();
  			this.index++;
+ 			callback();
+ 		} else {
+ 			callback(true, 'Your data must be a object.');
  		}
 	};
 
@@ -46,6 +50,16 @@ angular.module('memoriesApp')
  			callback(true, 'Your key is not valid or not exist!');
  		}
 	};
+
+	// Store.prototype.bindCleanup = function(callback) {
+	// 	if (callback && angular.isFunction(callback)) {
+	// 		this.cleanup = callback;
+	// 	};
+	// };
+
+	// Store.prototype.removeCleanup = function() {
+	// 	this.cleanup = null;
+	// };
 
 	var cache = {};
 	function _getStore(name) {

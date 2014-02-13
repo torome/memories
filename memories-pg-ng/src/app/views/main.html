@@ -6,7 +6,7 @@
 		<h3 ng-show="fn.isEmpty()">{{data.emptyInfo}}</h3>
 		<p ng-hide="fn.isEmpty()">
 			<ul>
-				<li ng-repeat="photo in data.photoList">{{photo.id}} &nbsp; {{fn.getThumbail($index)}}
+				<li ng-repeat="photo in data.photoList">{{photo.id}}
 					<img ng-src="{{fn.getThumbail($index)}}">
 				</li>
 			</ul>

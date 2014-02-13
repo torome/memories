@@ -13,8 +13,7 @@ angular.module('memoriesApp')
 			}, 
 			{ 
 			 	quality: 75,
-			 	destinationType: Camera.DestinationType.FILE_URI,
-			 	saveToPhotoAlbum: true
+			 	destinationType: Camera.DestinationType.FILE_URI
 			}
 		);
 	};
