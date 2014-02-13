@@ -1,9 +1,11 @@
 'use strict';
 
 angular.module('memoriesApp')
-  .controller('MenuCtrl', function ($scope, $log, cameraService, storeService) {
+  .controller('MenuCtrl', function ($scope, $log, cameraService, storeFactory) {
     $scope.data = {};
     $scope.fn = {};
+
+    var photoStore = storeFactory.getStore('photo');
 
     $scope.fn.takePhoto = function() {
     	cameraService.takePhoto(function(err, data) {
@@ -12,7 +14,7 @@ angular.module('memoriesApp')
     		} else {
     			$log.log("Take photo error!" + data);
     		}
-            storeService.addPhoto(data);
+            photoStore.add({'uri': data});
     	});
     }
   });

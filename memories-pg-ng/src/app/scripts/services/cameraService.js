@@ -3,7 +3,7 @@
 angular.module('memoriesApp')
   .service('cameraService', function cameraService() {
 
-	function _takePhoto(callback) {
+	this.takePhoto = function (callback) {
 		navigator.camera.getPicture(
 			function(imageURI) {
 				callback(null, imageURI);
@@ -12,13 +12,11 @@ angular.module('memoriesApp')
 			 	callback(true, message);
 			}, 
 			{ 
-			 	quality: 50,	
-			 	destinationType: Camera.DestinationType.FILE_URI 
+			 	quality: 75,
+			 	destinationType: Camera.DestinationType.FILE_URI,
+			 	saveToPhotoAlbum: true
 			}
 		);
-	}
-
-	return {
-		takePhoto: _takePhoto
 	};
+
 });

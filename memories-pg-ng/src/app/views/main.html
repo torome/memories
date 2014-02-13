@@ -3,8 +3,12 @@
 		<!-- <h3>Home</h3> -->
 		<br>
 		<br>
-		<h3>{{data.emptyInfo}}</h3>
-
+		<h3 ng-show="fn.isEmpty()">{{data.emptyInfo}}</h3>
+		<p ng-hide="fn.isEmpty()">
+			<ul>
+				<li ng-repeat="photo in data.photoList">{{photo.id}}</li>
+			</ul>
+		</p>
 		<br>
 		<br>
 		<br>
