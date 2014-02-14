@@ -22,7 +22,7 @@ angular.module('memoriesApp')
  	Store.prototype.add = function(data, callback) {
  		if (angular.isObject(data)) {
  			var key = this.name + this.index;
- 			this.list.push({'id':key, 'data': data});
+ 			this.list.push({'id':key, 'data': data, time: moment().format('YYYY-MM-DD hh:mm:ss')});
  			this._sync();
  			this.index++;
  			callback();

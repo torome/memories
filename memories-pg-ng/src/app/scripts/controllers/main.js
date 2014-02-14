@@ -32,6 +32,16 @@ angular.module('memoriesApp')
         return image && image.data.uri;
     };
 
+    $scope.fn.getTime = function(index) {
+        var image = $scope.data.photoList && $scope.data.photoList[index];
+        return image && image.time;
+    };
+
+    $scope.fn.clickEdit = function() {
+        alert("sss");
+    };   
+
+
     updatePhotoList();
 
   });

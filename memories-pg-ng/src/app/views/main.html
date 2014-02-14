@@ -5,11 +5,14 @@
 		<br>
 		<h3 ng-show="fn.isEmpty()">{{data.emptyInfo}}</h3>
 		<p ng-hide="fn.isEmpty()">
-			<ul>
-				<li ng-repeat="photo in data.photoList">{{photo.id}}
-					<img ng-src="{{fn.getThumbail($index)}}">
-				</li>
-			</ul>
+		<ons-list class="photo-list">
+		    <ons-list-item>
+		        <h3>Photos:</h3>
+		    </ons-list-item>
+		    <ons-list-item ng-repeat="photo in data.photoList">
+		    	<img ng-src="{{fn.getThumbail($index)}}"><span>{{fn.getTime($index)}}</span>
+		    </ons-list-item>
+		</ons-list>
 		</p>
 		<br>
 		<br>
