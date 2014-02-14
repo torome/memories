@@ -11,7 +11,7 @@ Some screenshots:
 
 ![home](https://raw2.github.com/jarontai/memories/master/screenshots/home.png)
 
-![swipe1](https://raw2.github.com/jarontai/memories/master/screenshots/swipe1.png)
+![swipe1](https://raw2.github.com/jarontai/memories/master/screenshots/swipe.png)
 
 ![menu](https://raw2.github.com/jarontai/memories/master/screenshots/menu.png)
 
