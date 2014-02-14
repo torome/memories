@@ -7,13 +7,13 @@ It's not finish yet.
 
 Some screenshots:
 
-![splash](https://raw2.github.com/jarontai/memories/master/screenshots/splash.png)
+![splash](https://raw2.github.com/jarontai/memories/master/screenshots/splash.jpg)
 
-![home](https://raw2.github.com/jarontai/memories/master/screenshots/home.png)
+![home](https://raw2.github.com/jarontai/memories/master/screenshots/home.jpg)
 
-![swipe1](https://raw2.github.com/jarontai/memories/master/screenshots/swipe1.png)
+![swipe1](https://raw2.github.com/jarontai/memories/master/screenshots/swipe.jpg)
 
-![menu](https://raw2.github.com/jarontai/memories/master/screenshots/menu.png)
+![menu](https://raw2.github.com/jarontai/memories/master/screenshots/menu.jpg)
 
 
 =============
