@@ -38,10 +38,10 @@ angular.module('memoriesApp')
     };
 
     $scope.fn.clickEdit = function() {
-        alert("sss");
+        alert("clickEdit");
     };   
-
 
     updatePhotoList();
 
-  });
+  })
+.controller('MainNavCtrl', function ($scope, $rootScope, $log, $timeout, photoService, storeFactory) {});
