@@ -5,8 +5,8 @@ angular.module('memoriesApp')
     $scope.data = {};
     $scope.fn = {};
 
-    $scope.data.menuTip = "向右滑动或点击左上角按钮打开菜单."
-    $scope.data.emptyInfo = "照片列表为空，请赶快去拍照吧!";
+    $scope.data.menuTip = "Swipe right/left to open or close menu."
+    $scope.data.emptyInfo = "Photo list is empty.";
     
     var photoStore = storeFactory.getStore('photo');
     function updatePhotoList() {
