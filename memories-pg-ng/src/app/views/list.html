@@ -1,4 +1,18 @@
-<ons-page class="center">
-	<h1>Photo List</h1>
-	<ons-button ng-click="ons.navigator.pushPage('views/detail.html', { title: 'Photo Detail' })">Push Photo Detail</ons-button>
+<ons-page class="center list" ng-controller="ListCtrl">
+<p ng-swipe-right="fn.deletePhoto()">
+<!-- 	<h1>Photo List</h1> -->
+<!-- 	<ons-button ng-click="ons.navigator.pushPage('views/detail.html', { title: 'Photo Detail' })">Push Photo Detail</ons-button> -->
+	<h3 ng-show="fn.isEmpty()">{{data.emptyInfo}}</h3>
+	<div class="photo-list">
+		<ons-list>
+		    <ons-list-item ngSwipeRight="fn.deletePhoto()">
+		    	<img src="http://www.w3schools.com/images/w3logotest2.png"><span>1992-02-02 08:08:08</span>
+		    </ons-list-item>
+
+		    <ons-list-item ng-swipe-right="fn.deletePhoto()" ng-repeat="photo in data.photoList">
+		    	<img ng-src="{{fn.getThumbail($index)}}"><span>{{fn.getTime($index)}}</span>
+		    </ons-list-item>
+		</ons-list>
+	</div>
+</p>
 </ons-page>

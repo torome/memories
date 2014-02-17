@@ -5,8 +5,6 @@ angular.module('memoriesApp')
     $scope.data = {};
     $scope.fn = {};
 
-
-
     $scope.data.startPage = "navigator.html";
     $scope.data.menuTip = "Swipe right/left to open or close menu."
     $scope.data.emptyInfo = "Photo list is empty.";
@@ -42,9 +40,20 @@ angular.module('memoriesApp')
 
     $scope.fn.clickEdit = function() {
         alert("clickEdit");
+    };     
+
+    $scope.fn.deletePhoto = function() {
+        alert("deletePhoto");
     };   
 
     updatePhotoList();
 
   })
-.controller('MainNavCtrl', function ($scope, $rootScope, $log, $timeout, photoService, storeFactory) {});
+.controller('ListCtrl', function ($scope, $rootScope, $log, $timeout, photoService, storeFactory) {
+    $scope.data = {};
+    $scope.fn = {};
+
+    $scope.fn.deletePhoto = function() {
+        alert("deletePhoto");
+    };  
+});
