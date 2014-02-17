@@ -1,4 +1,4 @@
-<ons-page class="center main" ng-controller="MainCtrl">
+<ons-page class="center main">
 	<!-- <h3>Home</h3> -->
 	<h3 ng-show="fn.isEmpty()">{{data.emptyInfo}}</h3>
 	<div class="photo-list">
@@ -7,11 +7,11 @@
 		        <h3>Photos:</h3>
 		    </ons-list-item>
 
-		    <ons-list-item>
+		    <ons-list-item ngSwipeRight="fn.deletePhoto()">
 		    	<img src="http://www.w3schools.com/images/w3logotest2.png"><span>1992-02-02 08:08:08</span>
 		    </ons-list-item>
 
-		    <ons-list-item ng-repeat="photo in data.photoList">
+		    <ons-list-item ngSwipeRight="fn.deletePhoto()" ng-repeat="photo in data.photoList">
 		    	<img ng-src="{{fn.getThumbail($index)}}"><span>{{fn.getTime($index)}}</span>
 		    </ons-list-item>
 		</ons-list>

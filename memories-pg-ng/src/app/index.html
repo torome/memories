@@ -27,7 +27,24 @@
     <![endif]-->
 
     <!-- Add your site or application content here -->
-    <ons-screen page="views/entry.html"></ons-screen>
+    <!-- <ons-screen page="views/entry.html" ng-controller="MainCtrl"></ons-screen> -->
+    <ons-tabbar  ng-controller="MainCtrl">
+        <ons-tabbar-item
+          active="true"
+          icon="home"
+          page="views/navigator.html">        
+        </ons-tabbar-item>
+
+        <ons-tabbar-item
+          icon="camera"
+          page="views/page2.html">        
+        </ons-tabbar-item>
+
+        <ons-tabbar-item
+          icon="gear"
+          page="views/page3.html">        
+        </ons-tabbar-item>
+    </ons-tabbar>
 
     <script src="cordova.js"></script>
 
