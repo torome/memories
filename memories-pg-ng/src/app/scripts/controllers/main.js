@@ -5,6 +5,9 @@ angular.module('memoriesApp')
     $scope.data = {};
     $scope.fn = {};
 
+
+
+    $scope.data.startPage = "navigator.html";
     $scope.data.menuTip = "Swipe right/left to open or close menu."
     $scope.data.emptyInfo = "Photo list is empty.";
     
