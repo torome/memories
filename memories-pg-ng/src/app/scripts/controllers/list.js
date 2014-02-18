@@ -14,7 +14,7 @@ angular.module('memoriesApp')
         photoStore.getList(function(err, list) {
             if (err) return;
             $timeout(function() {
-                $scope.data.photoList = list;            
+                $scope.data.photoList = list;          
             }, 5);
             $log.log("get photo list: " + angular.toJson(list));
         });        
@@ -23,12 +23,13 @@ angular.module('memoriesApp')
     function _bindCamera() {
         var cameraBtn = angular.element('.onsen_navigator-item .fa-camera');
         cameraBtn.bind('click', function() {
-            $log.log("_bindCamera ok");
+            $log.log("Take Camera");
+            $rootScope.$emit('takePhoto');
         });
     }
 
     function _init() {
-        $rootScope.$on('takePhoto', function(event) {
+        $rootScope.$on('takePhotoOK', function(event) {
             updatePhotoList();
         });
         updatePhotoList();
@@ -81,8 +82,8 @@ angular.module('memoriesApp')
         if (status == STATUS.NORMAL) {
             return false;
         }    
-        $log.log("_selectVisibility index type :" + index + " " + type);
         var photo = $scope.data.photoList[+index];
+        $log.log("_selectVisibility index type _delete:" + index + " " + type + " " + photo._delete);
         if (photo && photo._delete && type === 'on') {
             return true;
         } else if (photo && !photo._delete && type === 'off') {
@@ -95,7 +96,10 @@ angular.module('memoriesApp')
         $log.log("_toggleSelect index:" + index);  
         var photo = $scope.data.photoList[+index];
         if (photo) {
-            photo._delete = !photo._delete;
+            $timeout(function() {
+                photo._delete = !photo._delete;
+                $log.log("_toggleSelect photo._delete :" + photo._delete);
+            }, 10);
         }
     }
 
@@ -116,5 +120,5 @@ angular.module('memoriesApp')
     };
 
     _init();
-    
+
   });

@@ -1,7 +1,5 @@
 <ons-navigator
-	left-button-icon="fa fa-2x fa-camera"
-	right-button-icon="fa fa-2x fa-edit",
-	on-right-button-click="fn.toEdit();ons.navigator.pushPage('views/list.html', {title: 'Edit Photos', rightButtonIcon: 'fa fa-2x fa-trash-o', onLeftButtonClick: 'fn.exitEdit();ons.navigator.popPage();'});"
+	left-button-icon="fa fa-lg fa-camera" right-button-icon="fa fa-lg fa-edit" on-right-button-click="fn.toEdit();ons.navigator.pushPage('views/list.html', {title: 'Edit Photos', rightButtonIcon: 'fa fa-lg fa-trash-o', onLeftButtonClick: 'fn.exitEdit();ons.navigator.popPage();'});"
 	title="Photos"
 	page="views/list.html" ng-controller="ListCtrl">
 </ons-navigator>

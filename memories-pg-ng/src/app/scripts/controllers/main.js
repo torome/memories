@@ -10,7 +10,7 @@ angular.module('memoriesApp')
     		if (!err) {
     			$log.log("Take photo success! The data is: " + data);    		
                 photoStore.add({'uri': data}, function() {
-                    $rootScope.$emit('takePhoto');
+                    $rootScope.$emit('takePhotoOK');
                 });
             } else {
                 $log.log("Take photo error!" + data);
@@ -18,14 +18,15 @@ angular.module('memoriesApp')
         });
     }
 
-    function _gotoHome() {
-        ons.slidingMenu.toggleMenu();
-        ons.slidingMenu.setAbovePage('views/main.html')
-    }
+    $rootScope.$on('takePhoto', function(event) {
+        _takePhoto();
+    });
 
     $scope.fn = {
         takePhoto: _takePhoto,
-        gotoHome: _gotoHome
+        testClick: function(msg) {
+            $log.log("testClick " + msg);
+        }
     };
 
   });
