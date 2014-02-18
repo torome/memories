@@ -9,14 +9,32 @@ angular.module('memoriesApp')
     };
     var status = STATUS.NORMAL,
         photoStore = storeFactory.getStore('photo');
+
     function updatePhotoList() {
         photoStore.getList(function(err, list) {
             if (err) return;
             $timeout(function() {
-                $scope.data.photoList = list;                
+                $scope.data.photoList = list;            
             }, 5);
             $log.log("get photo list: " + angular.toJson(list));
         });        
+    }
+
+    function _bindCamera() {
+        var cameraBtn = angular.element('.onsen_navigator-item .fa-camera');
+        cameraBtn.bind('click', function() {
+            $log.log("_bindCamera ok");
+        });
+    }
+
+    function _init() {
+        $rootScope.$on('takePhoto', function(event) {
+            updatePhotoList();
+        });
+        updatePhotoList();
+        $timeout(function() {
+            _bindCamera();
+        }, 100);
     }
 
     function _listIsEmpty() {
@@ -59,6 +77,28 @@ angular.module('memoriesApp')
         return status == STATUS.EDIT;
     }
 
+    function _selectVisibility(index, type) {
+        if (status == STATUS.NORMAL) {
+            return false;
+        }    
+        $log.log("_selectVisibility index type :" + index + " " + type);
+        var photo = $scope.data.photoList[+index];
+        if (photo && photo._delete && type === 'on') {
+            return true;
+        } else if (photo && !photo._delete && type === 'off') {
+            return true;
+        }
+        return false;
+    }    
+
+    function _toggleSelect(index) {
+        $log.log("_toggleSelect index:" + index);  
+        var photo = $scope.data.photoList[+index];
+        if (photo) {
+            photo._delete = !photo._delete;
+        }
+    }
+
     $scope.data = {
         emptyInfo: "Photo list is empty."
     };
@@ -70,9 +110,11 @@ angular.module('memoriesApp')
         clickEdit: _clickEdit,
         toEdit: _toEdit,
         exitEdit: _exitEdit,
-        inEdit: _inEdit
+        inEdit: _inEdit,
+        selectVisibility: _selectVisibility,
+        toggleSelect: _toggleSelect
     };
 
-    updatePhotoList();
-
+    _init();
+    
   });

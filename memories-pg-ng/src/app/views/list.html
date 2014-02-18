@@ -2,20 +2,26 @@
 	<h3 ng-show="fn.isEmpty()">{{data.emptyInfo}}</h3>
 	<div class="photo-list">
 		<ons-list>
-		    <ons-list-item>
+<!-- 		    <ons-list-item>
 		    	<img src="http://www.w3schools.com/images/w3logotest2.png">
 		    	<span class="photo-time">1992-02-02 08:08:08</span>
-		    	<span ng-show="fn.inEdit()" class="del-select">
-			    	<ons-checkbox ng-model="answer" ng-true-value="1" ng-false-value="0"></ons-checkbox>
+		    	<span ng-show="fn.selectVisibility(0, 'off')" class="del-select">
+			    	<ons-icon icon="circle-o" size="lg" ng-click="fn.toggleSelect(0)"></ons-icon>
     			</span>
-		    </ons-list-item>
+    			<span ng-show="fn.selectVisibility(0, 'on')" class="del-select">
+			    	<ons-icon icon="circle" size="lg" ng-click="fn.toggleSelect(0)"></ons-icon>
+    			</span>
+		    </ons-list-item> -->
 
 			 <ons-list-item ng-repeat="photo in data.photoList">
 			    	<img ng-src="{{fn.getThumbail($index)}}">
 			    	<span class="photo-time">{{fn.getTime($index)}}</span>
-			    	<span ng-show="fn.inEdit()" class="del-select">
-				    	<ons-checkbox ng-model="photo._delete" ng-true-value="1" ng-false-value="0"></ons-checkbox>
-	    			</span>		    	
+			    	<span ng-show="fn.selectVisibility($index, 'off')" class="del-select">
+				    	<ons-icon icon="circle-o" size="2x" ng-click="fn.toggleSelect($index)"></ons-icon>
+	    			</span>
+	    			<span ng-show="fn.selectVisibility($index, 'on')" class="del-select">
+				    	<ons-icon icon="circle" size="2x" ng-click="fn.toggleSelect($index)"></ons-icon>
+	    			</span>    	
 			 </ons-list-item>
 		</ons-list>
 	</div>
