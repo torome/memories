@@ -1,3 +1,6 @@
-<ons-navigator title="Photos" page="views/list.html">
-	
+<ons-navigator
+	right-button-icon="fa fa-lg fa-edit"
+	on-right-button-click="fn.toEdit();ons.navigator.pushPage('views/list.html', {title: 'Edit Photos', rightButtonIcon: 'fa fa-lg fa-trash-o', onLeftButtonClick: 'fn.exitEdit();ons.navigator.popPage();'});"
+	title="Photos"
+	page="views/list.html" ng-controller="ListCtrl">
 </ons-navigator>

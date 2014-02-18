@@ -8,13 +8,18 @@
 	line-height: 52px;
 }
 .list .photo-list li img {
-	width: 50px;
-	height: 50px;
+	width: 65px;
+	height: 65px;
 	position: absolute;
 	left: 8%;
 }
-.list .photo-list li span {
+.list .photo-list li .photo-time {
 	position: absolute;
-	right: 8%;
+	right: 16%;
 	bottom: 2%;
+}
+.list .photo-list li .del-select {
+	position: absolute;
+	right: 5%;
+	bottom: 5%;
 }
