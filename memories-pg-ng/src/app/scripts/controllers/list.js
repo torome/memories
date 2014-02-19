@@ -2,13 +2,19 @@
 
 angular.module('memoriesApp')
   .controller('ListCtrl', function ($scope, $rootScope, $log, $timeout, photoService, storeFactory) {
+
+    var data = $rootScope.data;
+    if (data && data.nav) {
+        data.nav.title = "Photo List";
+        data.nav.isInner = false;
+    }
     
     var STATUS = {
         NORMAL: 'narmal',
         EDIT: 'edit'
     };
     var status = STATUS.NORMAL,
-        photoStore = storeFactory.getStore('photo');
+        photoStore = storeFactory.get('photo');
 
     function updatePhotoList() {
         photoStore.getList(function(err, list) {
@@ -21,11 +27,11 @@ angular.module('memoriesApp')
     }
 
     function _bindCamera() {
-        var cameraBtn = angular.element('.onsen_navigator-item .fa-camera');
-        cameraBtn.bind('click', function() {
-            $log.log("Take Camera");
-            $rootScope.$emit('takePhoto');
-        });
+        // var cameraBtn = angular.element('.onsen_navigator-item .fa-camera');
+        // cameraBtn.bind('click', function() {
+        //     $log.log("Take Camera");
+        //     $rootScope.$emit('takePhoto');
+        // });
     }
 
     function _init() {

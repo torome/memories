@@ -9,7 +9,7 @@ angular.module('memoriesApp', ['ngRoute'])
       })      
       .when('/', {
         templateUrl: 'views/list.html',
-        controller: 'MainCtrl'
+        controller: 'ListCtrl'
       })
       .otherwise({
         redirectTo: '/'

@@ -51,16 +51,6 @@ angular.module('memoriesApp')
  		}
 	};
 
-	// Store.prototype.bindCleanup = function(callback) {
-	// 	if (callback && angular.isFunction(callback)) {
-	// 		this.cleanup = callback;
-	// 	};
-	// };
-
-	// Store.prototype.removeCleanup = function() {
-	// 	this.cleanup = null;
-	// };
-
 	var cache = {};
 	function _getStore(name) {
 		if (name) {
@@ -76,6 +66,6 @@ angular.module('memoriesApp')
 	}
 
 	return {
-		getStore: _getStore
+		get: _getStore
 	};
 });

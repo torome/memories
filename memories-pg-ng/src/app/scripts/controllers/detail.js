@@ -3,7 +3,13 @@
 angular.module('memoriesApp')
   .controller('DetailCtrl', function ($scope, $rootScope, $log, photoService, storeFactory) {
 
-    var photoStore = storeFactory.getStore('photo');
+    var data = $rootScope.data;
+    if (data && data.nav) {
+        data.nav.title = "Photo Detail";
+        data.nav.isInner = true;
+    }
+
+    var photoStore = storeFactory.get('photo');
     function _takePhoto() {
         $log.log("_takePhoto!");
     	photoService.takePhoto(function(err, data) {

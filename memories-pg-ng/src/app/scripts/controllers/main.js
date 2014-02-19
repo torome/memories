@@ -1,9 +1,14 @@
 'use strict';
 
 angular.module('memoriesApp')
-  .controller('MainCtrl', function ($scope, $rootScope, $log, photoService, storeFactory) {
+  .controller('MainCtrl', function ($scope, $rootScope, $location, $log, photoService, storeFactory) {
 
-    var photoStore = storeFactory.getStore('photo');
+    var fn = {};
+    var data = {
+        nav: {}
+    };
+    var photoStore = storeFactory.get('photo');
+
     function _takePhoto() {
         $log.log("_takePhoto!");
     	photoService.takePhoto(function(err, data) {
@@ -17,16 +22,24 @@ angular.module('memoriesApp')
             }
         });
     }
-
     $rootScope.$on('takePhoto', function(event) {
         _takePhoto();
     });
 
-    $scope.fn = {
-        takePhoto: _takePhoto,
-        testClick: function(msg) {
-            $log.log("testClick " + msg);
-        }
+    function _goHome() {
+        $location.path('/');
+    }
+
+    function _goSettings() {
+        // TODO
+        $log.log("_goSettings");
+    }
+
+    $rootScope.fn = {
+        goHome: _goHome,
+        goSettings: _goSettings,
+        takePhoto: _takePhoto
     };
+    $rootScope.data = data;
 
   });
