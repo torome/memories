@@ -42,24 +42,22 @@ angular.module('memoriesApp')
     function init() {
         // fix action bar overflow list
         jQuery(function($) {
-            if ($('.action-overflow-list').length) { // android 2.3 would not display overflow list
-                // Settings menu
-                $('body').delegate('a[href="#settings"]', 'click', function(event) {
-                    $scope.$apply(function() {
-                        _goSettings();
-                    });
-                    $('ol.action-overflow-list').removeClass('active').hide();
-                    return false;
+            // Settings menu
+            $('body').delegate('a[href="#settings"]', 'click', function(event) {
+                $scope.$apply(function() {
+                    _goSettings();
                 });
-                // About menu
-                $('body').delegate('a[href="#about"]', 'click', function(event) {
-                    $scope.$apply(function() {
-                        _about();
-                    });
-                    $('ol.action-overflow-list').removeClass('active').hide();
-                    return false;
-                });                
-            }
+                $('ol.action-overflow-list').removeClass('active').hide();
+                return false;
+            });
+            // About menu
+            $('body').delegate('a[href="#about"]', 'click', function(event) {
+                $scope.$apply(function() {
+                    _about();
+                });
+                $('ol.action-overflow-list').removeClass('active').hide();
+                return false;
+            });
         });
     }
     init();
