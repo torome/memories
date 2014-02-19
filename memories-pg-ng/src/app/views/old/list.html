@@ -1,0 +1,28 @@
+<ons-page class="center list">
+	<h3 ng-show="fn.isEmpty()">{{data.emptyInfo}}</h3>
+	<div class="photo-list">
+		<ons-list>
+			<ons-list-item>
+			    	<img ng-src="">
+			    	<span class="photo-time">33333</span>
+			    	<span ng-show="!testImage" class="del-select" ng-click="testImage = !testImage;">
+				    	<ons-icon icon="circle-o" size="lg"></ons-icon>
+	    			</span>
+	    			<span ng-show="testImage" class="del-select" ng-click="testImage = !testImage;">
+				    	<ons-icon icon="circle" size="lg"></ons-icon>
+	    			</span>    	
+			 </ons-list-item>
+
+			 <ons-list-item ng-repeat="photo in data.photoList">
+			    	<img ng-src="{{fn.getThumbail($index)}}">
+			    	<span class="photo-time">{{fn.getTime($index)}}</span>
+			    	<span ng-show="fn.selectVisibility($index, 'off')" class="del-select">
+				    	<ons-icon icon="circle-o" size="lg" ng-click="fn.testClick('del-select')"></ons-icon>
+	    			</span>
+	    			<span ng-show="fn.selectVisibility($index, 'on')" class="del-select">
+				    	<ons-icon icon="circle" size="lg" ng-click="photo._delete = !photo._delete"></ons-icon>
+	    			</span>    	
+			 </ons-list-item>
+		</ons-list>
+	</div>
+</ons-page>

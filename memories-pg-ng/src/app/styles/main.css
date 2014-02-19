@@ -1,5 +1,7 @@
-.onsen_navigator-title {
-	font-size: 150%;
+.icon-memories {
+	background: url('../images/icon.png') 0 0 no-repeat;
+	margin-left: 3px;
+	margin-right: 3px;
 }
 
 /* list page */
