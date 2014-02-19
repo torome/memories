@@ -5,6 +5,7 @@ angular.module('memoriesApp')
 
     var fn = {};
     var data = {
+        firstTime: true,
         nav: {}
     };
     var photoStore = storeFactory.get('photo');
@@ -29,17 +30,46 @@ angular.module('memoriesApp')
     function _goHome() {
         $location.path('/');
     }
-
+    
     function _goSettings() {
-        // TODO
-        $log.log("_goSettings");
+        $log.log("Click Settings");
     }
 
+    function _about() {
+        $log.log("Click About");
+    }
+
+    function init() {
+        // fix action bar overflow list
+        jQuery(function($) {
+            if ($('.action-overflow-list').length) { // android 2.3 would not display overflow list
+                // Settings menu
+                $('body').delegate('a[href="#settings"]', 'click', function(event) {
+                    $scope.$apply(function() {
+                        _goSettings();
+                    });
+                    $('ol.action-overflow-list').removeClass('active').hide();
+                    return false;
+                });
+                // About menu
+                $('body').delegate('a[href="#about"]', 'click', function(event) {
+                    $scope.$apply(function() {
+                        _about();
+                    });
+                    $('ol.action-overflow-list').removeClass('active').hide();
+                    return false;
+                });                
+            }
+        });
+    }
+    init();
+    
     $rootScope.fn = {
         goHome: _goHome,
         goSettings: _goSettings,
+        about: _about,
         takePhoto: _takePhoto
     };
-    $rootScope.data = data;
+    $rootScope.data = data;    
 
   });

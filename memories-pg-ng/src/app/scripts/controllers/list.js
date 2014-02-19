@@ -125,6 +125,9 @@ angular.module('memoriesApp')
         toggleSelect: _toggleSelect
     };
 
-    _init();
+    if (!!data.firstTime) {
+        data.firstTime = false;
+        _init();        
+    }
 
   });
