@@ -37,16 +37,16 @@
             <header class="dialog-title-region">
                 <h1 class="title">Memories</h1>
             </header>
-            <div class="dialog-content">
+            <div class="dialog-content inset">
                 <br>
-                <h2>Confirm to exit?</h2>
+                <p>Confirm to exit?</p>
                 <br>
             </div>
             <ul class="dialog-actions">
                 <li><a ng-click="fn.cancelExit()" class="dialog-cancel-button">Cancel</a></li>
                 <li><a ng-click="fn.confirmExit()" class="dialog-ok-button">OK</a></li>
             </ul>
-        </div>
+        </div>     
     </div>
 
     <script src="cordova.js"></script>
@@ -61,7 +61,6 @@
     <script src="bower_components/async/lib/async.js"></script>
     <script src="bower_components/moment/moment.js"></script>
     <!-- endbuild -->
-
 
     <!-- build:js({.tmp,app}) scripts/scripts.js -->
     <script src="scripts/app.js"></script>

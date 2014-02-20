@@ -1,11 +1,19 @@
-.icon-memories {
+.action .icon-up-button {
+	margin-right: 2px;
+}
+.action .icon-memories {
 	background: url('../images/icon.png') 0 0 no-repeat;
-	margin-left: 3px;
 	margin-right: 3px;
+	margin-left: 3px;
 }
 
 .ng-click-active {
 	background-color: #5ef2f9;
+}
+
+#exit-dialog .dialog-content p,
+#exit-dialog .dialog-actions a {
+	font-size: 110%;
 }
 
 /* list page */

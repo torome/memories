@@ -11,6 +11,9 @@ angular.module('memoriesApp', ['ngRoute', 'ngTouch'])
         templateUrl: 'views/list.html',
         controller: 'ListCtrl'
       })
+      .when('/about', {
+        templateUrl: 'views/about.html'
+      })
       .otherwise({
         redirectTo: '/'
       });

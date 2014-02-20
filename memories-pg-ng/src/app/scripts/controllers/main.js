@@ -31,14 +31,15 @@ angular.module('memoriesApp')
         $location.path('/');
     }
     
-    function _goSettings(msg) {
-        msg = msg || '';
-        $log.log("Click Settings" + msg);
+    function _goSettings() {
+        $log.log("Click Settings");
     }
 
-    function _about(msg) {
-        msg = msg || '';
-        $log.log("Click About" + msg);
+    function _about() {
+        $log.log("Click About");
+        $location.path('/about');
+        data.nav.title = "About";
+        data.nav.isInner = true;
     }
 
     function init() {
