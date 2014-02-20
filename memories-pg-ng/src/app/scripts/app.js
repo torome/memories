@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('memoriesApp', ['ngRoute'])
+angular.module('memoriesApp', ['ngRoute', 'ngTouch'])
   .config(function ($routeProvider) {
     $routeProvider
       .when('/detail', {

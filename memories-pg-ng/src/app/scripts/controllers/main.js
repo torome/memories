@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('memoriesApp')
-  .controller('MainCtrl', function ($scope, $rootScope, $location, $log, photoService, storeFactory) {
+  .controller('MainCtrl', function ($scope, $rootScope, $location, $log, fixService, photoService, storeFactory) {
 
     var fn = {};
     var data = {
@@ -31,33 +31,23 @@ angular.module('memoriesApp')
         $location.path('/');
     }
     
-    function _goSettings() {
-        $log.log("Click Settings");
+    function _goSettings(msg) {
+        msg = msg || '';
+        $log.log("Click Settings" + msg);
     }
 
-    function _about() {
-        $log.log("Click About");
+    function _about(msg) {
+        msg = msg || '';
+        $log.log("Click About" + msg);
     }
 
     function init() {
-        // fix action bar overflow list
-        jQuery(function($) {
-            // Settings menu
-            $('body').delegate('a[href="#settings"]', 'click', function(event) {
-                $scope.$apply(function() {
-                    _goSettings();
-                });
-                $('ol.action-overflow-list').removeClass('active').hide();
-                return false;
-            });
-            // About menu
-            $('body').delegate('a[href="#about"]', 'click', function(event) {
-                $scope.$apply(function() {
-                    _about();
-                });
-                $('ol.action-overflow-list').removeClass('active').hide();
-                return false;
-            });
+        fixService.fixTouchEffect('a.toggle-spinner');
+        fixService.fixMenuClick('a[href="#settings"]', function() {
+            _goSettings();
+        });
+        fixService.fixMenuClick('a[href="#about"]', function() {
+            _about();
         });
     }
     init();

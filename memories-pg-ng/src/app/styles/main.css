@@ -4,6 +4,10 @@
 	margin-right: 3px;
 }
 
+.ng-click-active {
+	background-color: #5ef2f9;
+}
+
 /* list page */
 .list .photo-list li {
 	position: relative;
