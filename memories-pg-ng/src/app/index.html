@@ -13,9 +13,9 @@
     <!-- endbuild -->
 
 </head>
-<body>
+<body ng-controller="MainCtrl">
     <!-- Add your site or application content here -->
-    <div class="page" ng-controller="MainCtrl">
+    <div class="page">
         <header class="action-bar fixed-top">
           <a ng-click="fn.goHome()" class="app-icon action up">
             <i ng-show="data.nav.isInner" class="icon-up-button"></i>
@@ -30,6 +30,23 @@
         </header>
 
         <div class="content inset" ng-view></div>
+    </div>
+
+    <div class="dialogs">
+        <div id="exit-dialog" class="dialog">
+            <header class="dialog-title-region">
+                <h1 class="title">Memories</h1>
+            </header>
+            <div class="dialog-content">
+                <br>
+                <h2>Confirm to exit?</h2>
+                <br>
+            </div>
+            <ul class="dialog-actions">
+                <li><a ng-click="fn.cancelExit()" class="dialog-cancel-button">Cancel</a></li>
+                <li><a ng-click="fn.confirmExit()" class="dialog-ok-button">OK</a></li>
+            </ul>
+        </div>
     </div>
 
     <script src="cordova.js"></script>
@@ -53,6 +70,7 @@
     <script src="scripts/controllers/list.js"></script>
     <script src="scripts/controllers/config.js"></script>
     <script src="scripts/services/fixService.js"></script>
+    <script src="scripts/services/dialogService.js"></script>
     <script src="scripts/services/photoService.js"></script>
     <script src="scripts/services/storeFactory.js"></script>
     <script src="scripts/boot.js"></script>

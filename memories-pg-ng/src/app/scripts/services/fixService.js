@@ -4,41 +4,43 @@ angular.module('memoriesApp')
   .factory('fixService', function fixService($rootScope, $log) {
 
   function _fixTouchEffect(selector) {
-  	var TOUCH_CLASS = "ng-click-active";
-		$('body').delegate(selector, 'touchstart', function(event) {
-	      $(this).addClass(TOUCH_CLASS);
-	    });
-    $('body').delegate(selector, 'touchend', function(event) {
+    var TOUCH_CLASS = "ng-click-active";
+    $(document).on('touchstart', selector, function(event) {
+      $(this).addClass(TOUCH_CLASS);
+    });
+    $(document).on('touchend', selector, function(event) {
       $(this).removeClass(TOUCH_CLASS);
     });
-    $('body').delegate(selector, 'touchcancel', function(event) {
+    $(document).on('touchcancel',selector, function(event) {
       $(this).removeClass(TOUCH_CLASS);
     });
   }
 
-  var overflowList;
-  jQuery(function() {
-  	overflowList = jQuery('ol.action-overflow-list');
-  });
-	function _hideOverflowList() {
-		overflowList = overflowList || jQuery('ol.action-overflow-list');
-		overflowList.removeClass('active').hide();
-	}
+  function _hideOverflowList(fn) {
+    jQuery('ol.action-overflow-list').removeClass('active').hide(fn);
+  }
 
-	function _fixMenuClick(selector, fn) {
-		jQuery(function($) {
-	    $('body').delegate(selector, 'click', function(event) {
-	    	event.preventDefault();
-	    	event.stopPropagation();
-	      _hideOverflowList();
-	      $rootScope.$apply(fn);
-	    });
+  function _fixMenuClick(selector, fn) {
+    function _clickFn(ev) {
+      jQuery(document).off('click', selector);
+      ev.preventDefault();
+      ev.stopPropagation();
+      $rootScope.$apply(fn);
+      _hideOverflowList(function() {
+        jQuery(document).on('click', selector, _clickFn);
+      });
+    }
+
+    jQuery(function() {
+      $(document).on('click', selector, function(event) {
+        _clickFn(event);
+      });
       _fixTouchEffect(selector);
-		});
-	}
+    });
+  }
 
-	return {
-		fixMenuClick: _fixMenuClick,
-		fixTouchEffect: _fixTouchEffect
-	};
+  return {
+    fixMenuClick: _fixMenuClick,
+    fixTouchEffect: _fixTouchEffect
+  };
 });

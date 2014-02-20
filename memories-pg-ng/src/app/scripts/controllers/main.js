@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('memoriesApp')
-  .controller('MainCtrl', function ($scope, $rootScope, $location, $log, fixService, photoService, storeFactory) {
+  .controller('MainCtrl', function ($window, $scope, $rootScope, $location, $log, dialogService, fixService, photoService, storeFactory) {
 
     var fn = {};
     var data = {
@@ -42,6 +42,13 @@ angular.module('memoriesApp')
     }
 
     function init() {
+        document.removeEventListener("backbutton", onBackKey, false);
+        document.addEventListener("backbutton", function() {
+            dialogService.open('#exit-dialog', function() {
+                navigator.app.exitApp();
+            });
+        }, false);
+        
         fixService.fixTouchEffect('a.toggle-spinner');
         fixService.fixMenuClick('a[href="#settings"]', function() {
             _goSettings();
