@@ -26,22 +26,11 @@ angular.module('memoriesApp')
       });        
     }
 
-    function _bindCamera() {
-      // var cameraBtn = angular.element('.onsen_navigator-item .fa-camera');
-      // cameraBtn.bind('click', function() {
-      //     $log.log("Take Camera");
-      //     $rootScope.$emit('takePhoto');
-      // });
-    }
-
-    function _init() {
+    function init() {
       $rootScope.$on('takePhotoOK', function(event) {
           updatePhotoList();
       });
       updatePhotoList();
-      $timeout(function() {
-          _bindCamera();
-      }, 100);
     }
 
     function _listIsEmpty() {
@@ -109,6 +98,14 @@ angular.module('memoriesApp')
       }
     }
 
+    function _swipeImage() {
+      alert("Woo, you swipe me!");
+    }
+
+    function _touchImage() {
+      alert("Woo, you touch me!");
+    }
+
     $scope.data = {
       emptyInfo: "Photo list is empty."
     };
@@ -122,12 +119,14 @@ angular.module('memoriesApp')
       exitEdit: _exitEdit,
       inEdit: _inEdit,
       selectVisibility: _selectVisibility,
-      toggleSelect: _toggleSelect
+      toggleSelect: _toggleSelect,
+      swipeImage: _swipeImage,
+      touchImage: _touchImage
     };
 
     if (!!data.firstTime) {
       data.firstTime = false;
-      _init();        
+      init();        
     }
 
   });

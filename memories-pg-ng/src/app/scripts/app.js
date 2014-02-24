@@ -1,20 +1,23 @@
 'use strict';
 
-angular.module('memoriesApp', ['ngRoute', 'ngTouch'])
-  .config(function ($routeProvider) {
-    $routeProvider
-      .when('/detail', {
-        templateUrl: 'views/detail.html',
-        controller: 'DetailCtrl'
-      })      
-      .when('/', {
-        templateUrl: 'views/list.html',
-        controller: 'ListCtrl'
-      })
-      .when('/about', {
-        templateUrl: 'views/about.html'
-      })
-      .otherwise({
-        redirectTo: '/'
-      });
+angular.module('memoriesApp', ['ui.router', 'ngTouch'])
+  .config(function ($stateProvider, $urlRouterProvider) {
+    $urlRouterProvider.otherwise('/list');
+
+    $stateProvider
+    .state('list', {
+      url: "/list",
+      templateUrl: "partials/list.html",
+      controller: 'ListCtrl'
+    })    
+    .state('detail', {
+      url: "/detail",
+      templateUrl: "partials/detail.html",
+      controller: 'DetailCtrl'
+    })
+    .state('about', {
+      url: "/about",
+      templateUrl: "partials/about.html"
+    });    
+
   });

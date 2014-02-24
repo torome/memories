@@ -8,8 +8,8 @@
     "async": "~0.2.10",
     "moment": "~2.5.1",
     "angular": "~1.2.6",
-    "angular-route": "~1.2.6",
-    "angular-touch": "~1.2.14-build.2290"
+    "angular-touch": "~1.2.14-build.2290",
+    "angular-ui-router": "~0.2.8"
   },
   "devDependencies": {
     "angular-mocks": "1.2.6",

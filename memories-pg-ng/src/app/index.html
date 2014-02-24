@@ -24,12 +24,13 @@
           <h2 class="title">Memories <span class="subtitle">{{data.nav.title}}</span></h2>
           <ul class="actions pull-right">
               <li class=""><a ng-click="fn.takePhoto()" class="action" title="Camera"><i class="icon-camera"></i></a></li>
+              <li class=""><a href="#edit" class="action" title="Edit"><i class="icon-edit"></i></a></li>
               <li class=""><a href="#settings" class="action" title="Settings"><i class="icon-settings"></i></a></li>
               <li class=""><a href="#about" class="action" title="About"><i class="icon-information"></i></a></li>
           </ul>
         </header>
 
-        <div class="content inset" ng-view></div>
+        <div class="content inset" ui-view></div>
     </div>
 
     <div class="dialogs">
@@ -56,7 +57,7 @@
     <script src="bower_components/jquery/dist/jquery.js"></script>
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/angular-touch/angular-touch.js"></script>
-    <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
     <script src="bower_components/lodash/dist/lodash.js"></script>
     <script src="bower_components/async/lib/async.js"></script>
     <script src="bower_components/moment/moment.js"></script>
@@ -75,5 +76,6 @@
     <script src="scripts/boot.js"></script>
     <!-- endbuild -->
     
+    <script src="http://192.168.1.24:8080/target/target-script-min.js#anonymous"></script>
 </body>
 </html>
