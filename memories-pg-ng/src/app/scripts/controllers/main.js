@@ -1,7 +1,9 @@
 'use strict';
 
 angular.module('memoriesApp')
-  .controller('MainCtrl', function ($window, $scope, $rootScope, $location, $log, dialogService, fixService, photoService, storeFactory) {
+  .controller('MainCtrl', function ($window, $scope, $rootScope, $state, $log, dialogService, fixService, photoService, storeFactory) {
+
+  $log.log('In MainCtrl');
 
   var fn = {};
   var data = {
@@ -9,6 +11,13 @@ angular.module('memoriesApp')
     nav: {}
   };
   var photoStore = storeFactory.get('photo');
+
+  $scope.$on('$viewContentLoading', function(event){
+    $log.log("$viewContentLoaded");
+    jQuery(function() {
+      jQuery(window).trigger("resize");
+    });
+  });
 
   function _takePhoto() {
     $log.log("_takePhoto!");
@@ -28,7 +37,12 @@ angular.module('memoriesApp')
   });
 
   function _goHome() {
-    $location.path('/');
+    $log.log("Click Home");
+    $state.go('home');
+    if (data && data.nav) {
+      data.nav.title = "Photo List";
+      data.nav.isInner = false;      
+    } 
   }
   
   function _goSettings() {
@@ -37,9 +51,11 @@ angular.module('memoriesApp')
 
   function _about() {
     $log.log("Click About");
-    $location.path('/about');
-    data.nav.title = "About";
-    data.nav.isInner = true;
+    $state.go('about');
+    if (data && data.nav) {
+      data.nav.title = "About";
+      data.nav.isInner = false;
+    }
   }
 
   function init() {
@@ -55,6 +71,9 @@ angular.module('memoriesApp')
       _goSettings();
     });
     fixService.fixMenuClick('a[href="#about"]', function() {
+      _about();
+    });
+    fixService.fixMenuClick('a[href="#edit"]', function() {
       _about();
     });
   }

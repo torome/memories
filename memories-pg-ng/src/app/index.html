@@ -22,15 +22,14 @@
             <i class="icon-memories"></i>
           </a>
           <h2 class="title">Memories <span class="subtitle">{{data.nav.title}}</span></h2>
-          <ul class="actions pull-right">
-              <li class=""><a ng-click="fn.takePhoto()" class="action" title="Camera"><i class="icon-camera"></i></a></li>
-              <li class=""><a href="#edit" class="action" title="Edit"><i class="icon-edit"></i></a></li>
-              <li class=""><a href="#settings" class="action" title="Settings"><i class="icon-settings"></i></a></li>
-              <li class=""><a href="#about" class="action" title="About"><i class="icon-information"></i></a></li>
+    
+          <ul class="actions pull-right" ui-view="actions">
+
           </ul>
+
         </header>
 
-        <div class="content inset" ui-view></div>
+        <div class="content inset" ui-view="main"></div>
     </div>
 
     <div class="dialogs">

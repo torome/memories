@@ -3,10 +3,12 @@
 angular.module('memoriesApp')
   .controller('DetailCtrl', function ($scope, $rootScope, $log, photoService, storeFactory) {
 
+    $log.log('In DetailCtrl');
+
     var data = $rootScope.data;
     if (data && data.nav) {
-        data.nav.title = "Photo Detail";
-        data.nav.isInner = true;
+      data.nav.title = "Photo Detail";
+      data.nav.isInner = true;
     }
 
     var photoStore = storeFactory.get('photo');

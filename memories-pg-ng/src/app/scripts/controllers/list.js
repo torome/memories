@@ -1,20 +1,15 @@
 'use strict';
 
 angular.module('memoriesApp')
-  .controller('ListCtrl', function ($scope, $rootScope, $log, $timeout, photoService, storeFactory) {
+  .controller('ListCtrl', function ($scope, $rootScope, $state, $log, $timeout, photoService, storeFactory) {
 
-    var data = $rootScope.data;
-    if (data && data.nav) {
-      data.nav.title = "Photo List";
-      data.nav.isInner = false;
-    }
-    
+    var data = $rootScope.data;  
     var STATUS = {
       NORMAL: 'narmal',
       EDIT: 'edit'
     };
     var status = STATUS.NORMAL,
-      photoStore = storeFactory.get('photo');
+        photoStore = storeFactory.get('photo');
 
     function updatePhotoList() {
       photoStore.getList(function(err, list) {
@@ -103,7 +98,12 @@ angular.module('memoriesApp')
     }
 
     function _touchImage() {
-      alert("Woo, you touch me!");
+      $log.log("_touchImage");
+      $state.go('detail');
+      if (data && data.nav) {
+        data.nav.title = "Photo Detail";
+        data.nav.isInner = true;
+      }
     }
 
     $scope.data = {
