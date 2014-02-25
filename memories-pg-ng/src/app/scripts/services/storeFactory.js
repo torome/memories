@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('memoriesApp')
-  .service('storeFactory', function storeFactory() {
+.service('storeFactory', function storeFactory() {
 
   function Store(name) {
     this.name = name;
@@ -68,4 +68,5 @@ angular.module('memoriesApp')
   return {
     get: _getStore
   };
+  
 });

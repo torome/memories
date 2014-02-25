@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('memoriesApp')
-  .factory('fixService', function fixService($rootScope, $log) {
+.factory('fixService', function fixService($rootScope, $log) {
 
   function _fixTouchEffect(selector) {
     var TOUCH_CLASS = "ng-click-active";
@@ -39,8 +39,19 @@ angular.module('memoriesApp')
     });
   }
 
+  function _hideMenuItem(selector) {
+    jQuery(selector).parent('li').hide();
+  }
+
+  function _showMenuItem(selector) {
+    jQuery(selector).parent('li').show();
+  }
+
   return {
     fixMenuClick: _fixMenuClick,
-    fixTouchEffect: _fixTouchEffect
+    fixTouchEffect: _fixTouchEffect,
+    hideMenuItem: _hideMenuItem,
+    showMenuItem: _showMenuItem
   };
+  
 });

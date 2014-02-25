@@ -24,12 +24,13 @@
           <h2 class="title">Memories <span class="subtitle">{{data.nav.title}}</span></h2>
           <ul class="actions pull-right">
               <li class=""><a ng-click="fn.takePhoto()" class="action" title="Camera"><i class="icon-camera"></i></a></li>
+              <li class=""><a href="#edit" class="action" title="Edit"><i class="icon-edit"></i></a></li>
               <li class=""><a href="#settings" class="action" title="Settings"><i class="icon-settings"></i></a></li>
               <li class=""><a href="#about" class="action" title="About"><i class="icon-information"></i></a></li>
-          </ul>
+          </ul>      
         </header>
 
-        <div class="content inset" ng-view></div>
+        <div class="content" ng-view></div>
     </div>
 
     <div class="dialogs">
@@ -61,6 +62,8 @@
     <script src="bower_components/async/lib/async.js"></script>
     <script src="bower_components/moment/moment.js"></script>
     <!-- endbuild -->
+    <script src="lib/wookmark/jquery.wookmark.min.js"></script>
+    <script src="lib/wookmark/jquery.imagesloaded.js"></script>
 
     <!-- build:js({.tmp,app}) scripts/scripts.js -->
     <script src="scripts/app.js"></script>

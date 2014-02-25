@@ -1,3 +1,8 @@
+ul { list-style-type: none;  }
+ol { list-style-type: none;  }
+
+#tiles { overflow-y: scroll; }
+
 .action .icon-up-button {
 	margin-right: 2px;
 }
@@ -17,7 +22,8 @@
 }
 
 /* list page */
-.list .photo-list li {
+/*.grid-sizer { width: 33%; }*/
+/*.list .photo-list li {
 	position: relative;
 	line-height: 52px;
 }
@@ -36,4 +42,4 @@
 	position: absolute;
 	right: 5%;
 	bottom: 5%;
-}
+}*/

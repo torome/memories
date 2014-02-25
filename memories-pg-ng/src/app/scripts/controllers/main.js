@@ -1,14 +1,13 @@
 'use strict';
 
 angular.module('memoriesApp')
-  .controller('MainCtrl', function ($window, $scope, $rootScope, $location, $log, dialogService, fixService, photoService, storeFactory) {
+.controller('MainCtrl', function ($window, $scope, $rootScope, $location, $log, dialogService, fixService, photoService, storeFactory) {
 
-  var fn = {};
+  var photoStore = storeFactory.get('photo');
   var data = {
     firstTime: true,
     nav: {}
   };
-  var photoStore = storeFactory.get('photo');
 
   function _takePhoto() {
     $log.log("_takePhoto!");
@@ -35,6 +34,10 @@ angular.module('memoriesApp')
     $log.log("Click Settings");
   }
 
+  function _edit() {
+    $log.log("Click Edit");
+  }
+
   function _about() {
     $log.log("Click About");
     $location.path('/about');
@@ -43,6 +46,7 @@ angular.module('memoriesApp')
   }
 
   function init() {
+    // process back button
     document.removeEventListener("backbutton", onBackKey, false);
     document.addEventListener("backbutton", function() {
       dialogService.open('#exit-dialog', function() {
@@ -50,22 +54,29 @@ angular.module('memoriesApp')
       });
     }, false);
     
+    // fix action bar menu for old android
     fixService.fixTouchEffect('a.toggle-spinner');
     fixService.fixMenuClick('a[href="#settings"]', function() {
       _goSettings();
     });
+    fixService.fixMenuClick('a[href="#edit"]', function() {
+      _edit();
+    });    
     fixService.fixMenuClick('a[href="#about"]', function() {
       _about();
     });
   }
-  init();
   
   $rootScope.fn = {
     goHome: _goHome,
     goSettings: _goSettings,
     about: _about,
+    edit: _edit,
     takePhoto: _takePhoto
   };
+
   $rootScope.data = data;    
 
-  });
+  init();
+  
+});

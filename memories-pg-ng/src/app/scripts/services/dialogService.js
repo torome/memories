@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('memoriesApp')
-  .factory('dialogService', function dialogService($rootScope, $log) {
+.factory('dialogService', function dialogService($rootScope, $log) {
 
   var dialog;
   function _open(selector, okFn, cancelFn) {
