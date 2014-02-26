@@ -27,7 +27,6 @@ proguard/
 *.ipr
 *.iws
 .idea/
-www/
 node_modules/
 .tmp/
 .sass-cache/

@@ -1,8 +1,6 @@
 ul { list-style-type: none;  }
 ol { list-style-type: none;  }
 
-#tiles { overflow-y: scroll; }
-
 .action .icon-up-button {
 	margin-right: 2px;
 }
