@@ -27,5 +27,9 @@ proguard/
 *.ipr
 *.iws
 .idea/
-
-assets/www
+www/
+node_modules/
+.tmp/
+.sass-cache/
+bower_components/
+src/dist
