@@ -140,7 +140,7 @@ angular.module('memoriesApp')
     //     handler.wookmark();
     //   });
     // });
-    var myScroll = new IScroll('#photo-list');
+    // var myScroll = new IScroll('#photo-list');
   });
 
 });
