@@ -1,7 +1,9 @@
 'use strict';
 
 angular.module('memoriesApp')
-.factory('fixService', function fixService($rootScope, $log) {
+.factory('fixService', function fixService($rootScope, $log, global) {
+
+  var flags = global.flags;
 
   function _fixTouchEffect(selector) {
     var TOUCH_CLASS = "ng-click-active";
@@ -22,9 +24,9 @@ angular.module('memoriesApp')
 
   function _fixMenuClick(selector, fn) {
     function _clickFn(ev) {
-      jQuery(document).off('click', selector);
       ev.preventDefault();
       ev.stopPropagation();
+      jQuery(document).off('click', selector);
       $rootScope.$apply(fn);
       _hideOverflowList(function() {
         jQuery(document).on('click', selector, _clickFn);
@@ -34,6 +36,10 @@ angular.module('memoriesApp')
     jQuery(function() {
       $(document).on('click', selector, function(event) {
         _clickFn(event);
+        flags.clickMenu = true;
+        $timeout(function() {
+          flags.clickMenu = false;
+        }, 500);
       });
       _fixTouchEffect(selector);
     });

@@ -1,13 +1,15 @@
 'use strict';
 
 angular.module('memoriesApp')
-.controller('MainCtrl', function ($window, $scope, $rootScope, $location, $log, dialogService, fixService, photoService, storeFactory) {
+.controller('MainCtrl', function ($window, $scope, $rootScope, $location, $log, global, dialogService, fixService, photoService, storeFactory) {
 
   var photoStore = storeFactory.get('photo');
+  var takePhotoEvent = global.events.takePhoto;
   var data = {
     firstTime: true,
     nav: {}
   };
+
 
   function _takePhoto() {
     $log.log("_takePhoto!");
@@ -15,14 +17,14 @@ angular.module('memoriesApp')
       if (!err) {
         $log.log("Take photo success! The data is: " + data);       
         photoStore.add({'uri': data}, function() {
-          $rootScope.$emit('takePhotoOK');
+          $rootScope.$emit(takePhotoEvent);
         });
       } else {
         $log.log("Take photo error!" + data);
       }
     });
   }
-  $rootScope.$on('takePhoto', function(event) {
+  $rootScope.$on(takePhotoEvent, function(event) {
     _takePhoto();
   });
 
