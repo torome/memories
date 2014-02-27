@@ -6,12 +6,12 @@ angular.module('memoriesApp')
   var dialog;
   function _open(selector, okFn, cancelFn) {
     dialog = new fries.Dialog({
-      'selector': selector,
-      'callbackOk': function() {
+      selector: selector,
+      callbackOk: function() {
         if (okFn) okFn.apply();
         this.hide();
       },
-      'callbackCancel': function() {
+      callbackCancel: function() {
         if (cancelFn) cancelFn.apply();
         this.hide();
       }

@@ -8,22 +8,22 @@ angular.module('memoriesApp')
 
   function init() {
     if (data && data.nav) {
-      data.nav.title = "Photo Detail";
+      data.nav.title = 'Photo Detail';
       data.nav.isInner = true;
     }
-    fixService.hideMenuItem('a[href="#edit"]'); 
+    fixService.hideMenuItem('a[href="#edit"]');
   }
 
   function _takePhoto() {
-    $log.log("_takePhoto!");
+    $log.log('_takePhoto!');
     photoService.takePhoto(function(err, data) {
       if (!err) {
-        $log.log("Take photo success! The data is: " + data);       
+        $log.log('Take photo success! The data is: ' + data);
         photoStore.add({'uri': data}, function() {
             $rootScope.$emit('takePhotoOK');
         });
       } else {
-        $log.log("Take photo error!" + data);
+        $log.log('Take photo error!' + data);
       }
     });
   }
@@ -35,7 +35,7 @@ angular.module('memoriesApp')
   $scope.fn = {
     takePhoto: _takePhoto,
     testClick: function(msg) {
-        $log.log("testClick " + msg);
+        $log.log('testClick ' + msg);
     }
   };
 

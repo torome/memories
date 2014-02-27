@@ -12,15 +12,15 @@ angular.module('memoriesApp')
 
 
   function _takePhoto() {
-    $log.log("_takePhoto!");
+    $log.log('_takePhoto!');
     photoService.takePhoto(function(err, data) {
       if (!err) {
-        $log.log("Take photo success! The data is: " + data);       
+        $log.log('Take photo success! The data is: ' + data);       
         photoStore.add({'uri': data}, function() {
           $rootScope.$emit(takePhotoEvent);
         });
       } else {
-        $log.log("Take photo error!" + data);
+        $log.log('Take photo error!' + data);
       }
     });
   }
@@ -33,24 +33,24 @@ angular.module('memoriesApp')
   }
   
   function _goSettings() {
-    $log.log("Click Settings");
+    $log.log('Click Settings');
   }
 
   function _edit() {
-    $log.log("Click Edit");
+    $log.log('Click Edit');
   }
 
   function _about() {
-    $log.log("Click About");
+    $log.log('Click About');
     $location.path('/about');
-    data.nav.title = "About";
+    data.nav.title = 'About';
     data.nav.isInner = true;
   }
 
   function init() {
     // process back button
-    document.removeEventListener("backbutton", onBackKey, false);
-    document.addEventListener("backbutton", function() {
+    document.removeEventListener('backbutton', onBackKey, false);
+    document.addEventListener('backbutton', function() {
       dialogService.open('#exit-dialog', function() {
         navigator.app.exitApp();
       });

@@ -16,11 +16,11 @@ angular.module('memoriesApp', ['ngRoute', 'ngTouch'])
     .when('/detail', {
       templateUrl: 'views/detail.html',
       controller: 'DetailCtrl'
-    })      
+    })
     .when('/', {
       templateUrl: function() {
         return oldAndroid? 'views/grid.html' : 'views/list.html';
-       },
+      },
       controller: 'ListCtrl'
     })
     .when('/about', {

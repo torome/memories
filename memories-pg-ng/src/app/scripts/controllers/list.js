@@ -13,7 +13,7 @@ angular.module('memoriesApp')
 
   function init() {
     if (data && data.nav) {
-      data.nav.title = "Photo List";
+      data.nav.title = 'Photo List';
       data.nav.isInner = false;
     }
     fixService.showMenuItem('a[href="#edit"]'); 
@@ -26,7 +26,7 @@ angular.module('memoriesApp')
       $timeout(function() {
         $scope.data.photoList = list;          
       }, 5);
-      $log.log("get photo list: " + angular.toJson(list));
+      $log.log('get photo list: ' + angular.toJson(list));
     });        
   }
 
@@ -46,7 +46,7 @@ angular.module('memoriesApp')
   }
 
   function _clickImage() {    
-    $log.log("_clickImage");
+    $log.log('_clickImage');
   }
 
   function _changeStatus(currentStatus) {
@@ -56,17 +56,17 @@ angular.module('memoriesApp')
   }
 
   function _toEdit() {     
-    $log.log("_toEdit");
+    $log.log('_toEdit');
     _changeStatus(STATUS.EDIT);
   }
 
   function _exitEdit() {     
-    $log.log("_eixtEdit");
+    $log.log('_eixtEdit');
     _changeStatus(STATUS.NORMAL);
   }
 
   function _inEdit() {
-    $log.log("_inEdit");  
+    $log.log('_inEdit');  
     return status == STATUS.EDIT;
   }
 
@@ -75,7 +75,7 @@ angular.module('memoriesApp')
       return false;
     }    
     var photo = $scope.data.photoList[+index];
-    $log.log("_selectVisibility index type _delete:" + index + " " + type + " " + photo._delete);
+    $log.log('_selectVisibility index type _delete:' + index + ' ' + type + ' ' + photo._delete);
     if (photo && photo._delete && type === 'on') {
       return true;
     } else if (photo && !photo._delete && type === 'off') {
@@ -85,12 +85,12 @@ angular.module('memoriesApp')
   }    
 
   function _toggleSelect(index) {
-    $log.log("_toggleSelect index:" + index);  
+    $log.log('_toggleSelect index:' + index);  
     var photo = $scope.data.photoList[+index];
     if (photo) {
       $timeout(function() {
         photo._delete = !photo._delete;
-        $log.log("_toggleSelect photo._delete :" + photo._delete);
+        $log.log('_toggleSelect photo._delete :' + photo._delete);
       }, 10);
     }
   }
@@ -100,7 +100,7 @@ angular.module('memoriesApp')
   });
 
   $scope.data = {
-    emptyInfo: "Photo list is empty."
+    emptyInfo: 'Photo list is empty.'
   };
 
   $scope.fn = {
@@ -127,7 +127,7 @@ angular.module('memoriesApp')
     //     container: $('#main'), // Optional, used for some extra CSS styling
     //     offset: 3, // Optional, the distance between grid items
     //     outerOffset: 2, // Optional, the distance to the containers border
-    //     itemWidth: "30%" // Optional, the width of a grid item
+    //     itemWidth: '30%' // Optional, the width of a grid item
     //   });
 
     //   // Capture clicks on grid items.

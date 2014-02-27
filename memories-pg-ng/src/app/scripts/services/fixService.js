@@ -6,7 +6,7 @@ angular.module('memoriesApp')
   var flags = global.flags;
 
   function _fixTouchEffect(selector) {
-    var TOUCH_CLASS = "ng-click-active";
+    var TOUCH_CLASS = 'ng-click-active';
     $(document).on('touchstart', selector, function(event) {
       $(this).addClass(TOUCH_CLASS);
     });
