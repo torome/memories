@@ -1,17 +1,13 @@
 <div class="grid">
+    
+  <div ng-show="fn.listEmpty()" class="empty-info">
+      {{data.emptyInfo}}
+  </div>  
 
-  <ul id="photo-list" class="photo-list">
-    <!-- These are our grid blocks -->
-    <li><img ng-click="fn.clickImage()" src="http://www.w3schools.com/images/w3html.gif" ></li>
-    <li><img ng-click="fn.clickImage()" src="http://www.w3schools.com/images/w3html.gif" ></li>
-    <li><img ng-click="fn.clickImage()" src="http://www.w3schools.com/images/w3html.gif" ></li>
-    <li><img ng-click="fn.clickImage()" src="http://www.w3schools.com/images/w3html.gif" ></li>
-    <li><img ng-click="fn.clickImage()" src="http://www.w3schools.com/images/w3html.gif" ></li>
-    <li><img ng-click="fn.clickImage()" src="http://www.w3schools.com/images/w3html.gif" ></li>
-    <li><img ng-click="fn.clickImage()" src="http://www.w3schools.com/images/w3html.gif" ></li>
-    <li><img ng-click="fn.clickImage()" src="http://www.w3schools.com/images/w3html.gif" ></li>
-    <li><img ng-click="fn.clickImage()" src="http://www.w3schools.com/images/w3html.gif" ></li>   
-    <!-- End of grid blocks -->
+  <ul ng-show="!fn.listEmpty()" id="photo-list" class="photo-list">
+    <li ng-repeat="photo in data.photoList">
+    <img ng-click="fn.clickImage()" ng-src="{{photo.data.uri}}" >
+    </li>
   </ul>
 
 </div>
