@@ -1,7 +1,7 @@
 ![Memories Icon](https://raw2.github.com/jarontai/memories/master/memories-pg-ng/platforms/android/res/drawable/small_icon.jpg) Memories
 =============
 
-A camera app build with [phonegap](http://phonegap.com/), [angular](http://angularjs.org/) and [fries](http://getfri.es//). 
+A camera app build with [phonegap](http://phonegap.com/), [angular](http://angularjs.org/) and [fries](http://getfri.es/). 
 It's not finish yet.
 =============
 
