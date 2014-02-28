@@ -13,7 +13,7 @@ angular.module('memoriesApp')
       photoStore = storeFactory.get('photo');
 
   $scope.data = $scope.data || {
-    emptyInfo: 'Photo list is empty.',
+    emptyInfo: 'Photo list is empty',
     photoList: []
   };
   var photoList = $scope.data.photoList;
