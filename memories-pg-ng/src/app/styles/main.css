@@ -92,3 +92,8 @@ ul, ol { list-style-type: none; }
 	right: 5%;
 	bottom: 5%;
 }
+
+/* about page */
+.about {
+	padding-top: 10%;
+}
