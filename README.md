@@ -10,11 +10,11 @@ Some screenshots:
 <table cellspacing="10" cellpadding="3">
   <tr>
     <td style="border:3px solid #000;"><img src="https://raw2.github.com/jarontai/memories/master/screenshots/splash.jpg" alt="splash"></td>
-    <td style="border:3px solid #000;"><img src="https://raw2.github.com/jarontai/memories/master/screenshots/home.jpg" alt="home"></td>
+    <td style="border:3px solid #000;"><img src="https://raw2.github.com/jarontai/memories/master/screenshots/home-empty.jpg" alt="home"></td>
   </tr>
   <tr>
-    <td style="border:3px solid #000;"><img src="https://raw2.github.com/jarontai/memories/master/screenshots/swipe.jpg" alt="swipe"></td>
-    <td style="border:3px solid #000;"><img src="https://raw2.github.com/jarontai/memories/master/screenshots/menu.jpg" alt="menu"></td>
+    <td style="border:3px solid #000;"><img src="https://raw2.github.com/jarontai/memories/master/screenshots/menu.jpg" alt="swipe"></td>
+    <td style="border:3px solid #000;"><img src="https://raw2.github.com/jarontai/memories/master/screenshots/exit.jpg" alt="menu"></td>
   </tr>
 </table>
 
