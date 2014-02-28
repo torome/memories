@@ -4,7 +4,7 @@ angular.module('memoriesApp')
 .factory('dialogService', function dialogService($rootScope, $log) {
 
   var dialog;
-  function _open(selector, okFn, cancelFn) {
+  function _openDialog(selector, okFn, cancelFn) {
     dialog = new fries.Dialog({
       selector: selector,
       callbackOk: function() {
@@ -19,7 +19,17 @@ angular.module('memoriesApp')
     dialog.show();
   }
 
+  var toast;
+  function _openExitToast(dura) {
+    toast = new fries.Toast({
+      content: 'Press the back key again to exit',
+      duration: dura || 2500
+    });
+  }
+
   return {
-    open: _open
+    openDialog: _openDialog,
+    openExitToast: _openExitToast
   };
+
 });

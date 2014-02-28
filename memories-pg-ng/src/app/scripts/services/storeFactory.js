@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('memoriesApp')
-.service('storeFactory', function storeFactory() {
+.factory('storeFactory', function storeFactory() {
 
   function Store(name) {
     this.name = name;

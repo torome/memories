@@ -1,9 +1,10 @@
 'use strict';
 
 angular.module('memoriesApp')
-.controller('ListCtrl', function ($scope, $rootScope, $log, $timeout, fixService, photoService, storeFactory) {
+.controller('ListCtrl', function ($scope, $rootScope, $log, $timeout, global, fixService, photoService, storeFactory) {
 
   var rootData = $rootScope.rootData;
+  var events = global.events;
   var STATUS = {
     NORMAL: 'narmal',
     EDIT: 'edit'
@@ -50,7 +51,7 @@ angular.module('memoriesApp')
     return image && image.time;
   }
 
-  function _clickImage() {    
+  function _clickImage() {
     $log.log('_clickImage');
   }
 
@@ -61,17 +62,14 @@ angular.module('memoriesApp')
   }
 
   function _toEdit() {     
-    $log.log('_toEdit');
     _changeStatus(STATUS.EDIT);
   }
 
   function _exitEdit() {     
-    $log.log('_eixtEdit');
     _changeStatus(STATUS.NORMAL);
   }
 
-  function _inEdit() {
-    $log.log('_inEdit');  
+  function _inEdit() {  
     return status == STATUS.EDIT;
   }
 
@@ -100,7 +98,7 @@ angular.module('memoriesApp')
     }
   }
 
-  $rootScope.$on('takePhotoOK', function(event) {
+  $rootScope.$on(events.updatePhoto, function(event) {
     updatePhotoList();
   });
 

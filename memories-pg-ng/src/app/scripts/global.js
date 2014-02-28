@@ -1,14 +1,20 @@
 'use strict';
 
 angular.module('memoriesApp')
-.service('global', function global() {
+.factory('global', function global() {
 
   return {
     events: {
-      takePhoto: 'takePhoto'
+      takePhoto: 'takePhoto',
+      updatePhoto: 'updatePhoto'
     },
     flags: {
       clickMenu: false
+    },
+    paths: {
+      home: '/',
+      detail: '/detail',
+      about: '/about'
     }
   };
 

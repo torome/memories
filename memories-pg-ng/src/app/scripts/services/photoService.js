@@ -1,9 +1,9 @@
 'use strict';
 
 angular.module('memoriesApp')
-.service('photoService', function photoService() {
+.factory('photoService', function photoService() {
 
-  this.takePhoto = function(callback) {
+  function _takePhoto(callback) {
     navigator.camera.getPicture(
       function(imageURI) {
         callback(null, imageURI);
@@ -16,6 +16,10 @@ angular.module('memoriesApp')
         destinationType: Camera.DestinationType.FILE_URI
       }
     );
+  }
+
+  return {
+    takePhoto: _takePhoto
   };
 
 });

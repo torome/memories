@@ -1,11 +1,11 @@
 'use strict';
 
 angular.module('memoriesApp')
-.controller('MainCtrl', function ($window, $scope, $rootScope, $location, $log, global, dialogService, fixService, photoService, storeFactory) {
+.controller('MainCtrl', function ($window, $scope, $rootScope, $location, $log, global, backBtnService, dialogService, fixService, photoService, storeFactory) {
 
   var photoStore = storeFactory.get('photo');
-  var takePhotoEvent = global.events.takePhoto;
-  var addPhotoEvent = global.events.addPhoto;
+  var events = global.events;
+  var paths = global.paths;
   var rootData = {
     firstTime: true,
     nav: {}
@@ -15,19 +15,19 @@ angular.module('memoriesApp')
     photoService.takePhoto(function(err, photoData) {
       if (!err) {
         photoStore.add({'uri': photoData}, function() {
-          $rootScope.$emit(addPhotoEvent);
+          $rootScope.$emit(events.updatePhoto);
         });
       } else {
         $log.error('Take photo error!' + photoData);
       }
     });
   }
-  $rootScope.$on(takePhotoEvent, function(event) {
+  $rootScope.$on(events.takePhoto, function(event) {
     _takePhoto();
   });
 
   function _goHome() {
-    $location.path('/');
+    $location.path(paths.home);
   }
   
   function _goSettings() {
@@ -39,19 +39,14 @@ angular.module('memoriesApp')
   }
 
   function _about() {
-    $location.path('/about');
+    $location.path(paths.about);
     rootData.nav.title = 'About';
     rootData.nav.isInner = true;
   }
 
   function init() {
     // process back button
-    document.removeEventListener('backbutton', onBackKey, false);
-    document.addEventListener('backbutton', function() {
-      dialogService.open('#exit-dialog', function() {
-        navigator.app.exitApp();
-      });
-    }, false);
+    backBtnService.init();
     
     // fix action bar menu for old android
     fixService.fixTouchEffect('a.toggle-spinner');
