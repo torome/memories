@@ -4,10 +4,12 @@ angular.module('memoriesApp', ['ngRoute', 'ngTouch'])
 .config(function ($routeProvider) {
 
   // use grid layout for old android (no scrolling)
-  var oldAndroid = false;
+  var photoView = 'views/grid.html';
+  var photoCtrl = 'GridCtrl';
   if (device) {
-    if (device.platform.toLowerCase === 'android' && parseFloat(device.version) < 3) {
-      oldAndroid = true;
+    if (device.platform.toLowerCase() === 'android' && parseFloat(device.version) >= 3) {
+      photoView = 'views/list.html';
+      photoCtrl = 'ListCtrl';
     }
   }
 
@@ -18,10 +20,8 @@ angular.module('memoriesApp', ['ngRoute', 'ngTouch'])
       controller: 'DetailCtrl'
     })
     .when('/', {
-      templateUrl: function() {
-        return oldAndroid? 'views/grid.html' : 'views/list.html';
-      },
-      controller: 'ListCtrl'
+      templateUrl: photoView,
+      controller: photoCtrl
     })
     .when('/about', {
       templateUrl: 'views/about.html'

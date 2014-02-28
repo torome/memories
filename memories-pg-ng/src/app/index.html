@@ -17,13 +17,13 @@
     <!-- Add your site or application content here -->
     <div class="page">
         <header class="action-bar fixed-top">
-          <a ng-click="fn.goHome()" class="app-icon action up">
-            <i ng-show="data.nav.isInner" class="icon-up-button"></i>
+          <a ng-click="rootFn.goHome()" class="app-icon action up">
+            <i ng-show="rootData.nav.isInner" class="icon-up-button"></i>
             <i class="icon-memories"></i>
           </a>
-          <h2 class="title">Memories <span class="subtitle">{{data.nav.title}}</span></h2>
+          <h2 class="title">Memories <span class="subtitle">{{rootData.nav.title}}</span></h2>
           <ul class="actions pull-right">
-              <li class=""><a ng-click="fn.takePhoto()" class="action" title="Camera"><i class="icon-camera"></i></a></li>
+              <li class=""><a ng-click="rootFn.takePhoto()" class="action" title="Camera"><i class="icon-camera"></i></a></li>
               <li class=""><a href="#edit" class="action" title="Edit"><i class="icon-edit"></i></a></li>
               <li class=""><a href="#settings" class="action" title="Settings"><i class="icon-settings"></i></a></li>
               <li class=""><a href="#about" class="action" title="About"><i class="icon-information"></i></a></li>
@@ -71,6 +71,7 @@
     <script src="scripts/global.js"></script>
     <script src="scripts/controllers/main.js"></script>
     <script src="scripts/controllers/detail.js"></script>
+    <script src="scripts/controllers/grid.js"></script>
     <script src="scripts/controllers/list.js"></script>
     <script src="scripts/controllers/config.js"></script>
     <script src="scripts/services/fixService.js"></script>

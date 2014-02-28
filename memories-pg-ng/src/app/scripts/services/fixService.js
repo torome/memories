@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('memoriesApp')
-.factory('fixService', function fixService($rootScope, $log, global) {
+.factory('fixService', function fixService($timeout, $rootScope, $log, global) {
 
   var flags = global.flags;
 

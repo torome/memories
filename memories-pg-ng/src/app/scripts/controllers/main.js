@@ -5,22 +5,20 @@ angular.module('memoriesApp')
 
   var photoStore = storeFactory.get('photo');
   var takePhotoEvent = global.events.takePhoto;
-  var data = {
+  var addPhotoEvent = global.events.addPhoto;
+  var rootData = {
     firstTime: true,
     nav: {}
   };
 
-
   function _takePhoto() {
-    $log.log('_takePhoto!');
-    photoService.takePhoto(function(err, data) {
+    photoService.takePhoto(function(err, photoData) {
       if (!err) {
-        $log.log('Take photo success! The data is: ' + data);       
-        photoStore.add({'uri': data}, function() {
-          $rootScope.$emit(takePhotoEvent);
+        photoStore.add({'uri': photoData}, function() {
+          $rootScope.$emit(addPhotoEvent);
         });
       } else {
-        $log.log('Take photo error!' + data);
+        $log.error('Take photo error!' + photoData);
       }
     });
   }
@@ -41,10 +39,9 @@ angular.module('memoriesApp')
   }
 
   function _about() {
-    $log.log('Click About');
     $location.path('/about');
-    data.nav.title = 'About';
-    data.nav.isInner = true;
+    rootData.nav.title = 'About';
+    rootData.nav.isInner = true;
   }
 
   function init() {
@@ -69,7 +66,7 @@ angular.module('memoriesApp')
     });
   }
   
-  $rootScope.fn = {
+  $rootScope.rootFn = {
     goHome: _goHome,
     goSettings: _goSettings,
     about: _about,
@@ -77,7 +74,7 @@ angular.module('memoriesApp')
     takePhoto: _takePhoto
   };
 
-  $rootScope.data = data;    
+  $rootScope.rootData = rootData;    
 
   init();
   

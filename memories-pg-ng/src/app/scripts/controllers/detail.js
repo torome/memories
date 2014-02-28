@@ -3,27 +3,27 @@
 angular.module('memoriesApp')
 .controller('DetailCtrl', function ($scope, $rootScope, $log, fixService, photoService, storeFactory) {
 
-  var data = $rootScope.data;
+  var rootData = $rootScope.rootData;
   var photoStore = storeFactory.get('photo');
 
   function init() {
-    if (data && data.nav) {
-      data.nav.title = 'Photo Detail';
-      data.nav.isInner = true;
+    if (rootData && rootData.nav) {
+      rootData.nav.title = 'Photo Detail';
+      rootData.nav.isInner = true;
     }
     fixService.hideMenuItem('a[href="#edit"]');
   }
 
   function _takePhoto() {
     $log.log('_takePhoto!');
-    photoService.takePhoto(function(err, data) {
+    photoService.takePhoto(function(err, photoData) {
       if (!err) {
-        $log.log('Take photo success! The data is: ' + data);
-        photoStore.add({'uri': data}, function() {
+        $log.log('Take photo success! The photoData is: ' + photoData);
+        photoStore.add({'uri': photoData}, function() {
             $rootScope.$emit('takePhotoOK');
         });
       } else {
-        $log.log('Take photo error!' + data);
+        $log.log('Take photo error!' + photoData);
       }
     });
   }
@@ -35,7 +35,7 @@ angular.module('memoriesApp')
   $scope.fn = {
     takePhoto: _takePhoto,
     testClick: function(msg) {
-        $log.log('testClick ' + msg);
+      $log.log('testClick ' + msg);
     }
   };
 
