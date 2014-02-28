@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('memoriesApp')
-.controller('DetailCtrl', function ($scope, $rootScope, $log, fixService, photoService, storeFactory) {
+.controller('DetailCtrl', function ($routeParams, $scope, $rootScope, $log, fixService, photoService, storeFactory) {
 
   var rootData = $rootScope.rootData;
   var photoStore = storeFactory.get('photo');
@@ -14,11 +14,8 @@ angular.module('memoriesApp')
     fixService.hideMenuItem('a[href="#edit"]');
   }
 
-  $scope.fn = {
-    takePhoto: _takePhoto,
-    testClick: function(msg) {
-      $log.log('testClick ' + msg);
-    }
+  $scope.data = $scope.data || {
+    photoId: $routeParams.photoId || ''
   };
 
   init();

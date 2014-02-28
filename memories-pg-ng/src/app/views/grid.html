@@ -6,8 +6,10 @@
 
   <ul ng-show="!fn.listEmpty()" id="photo-list" class="photo-list">
     <li ng-repeat="photo in data.photoList">
-    <img ng-click="fn.clickImage()" ng-src="{{photo.data.uri}}" >
+    <a ng-href="#detail/{{photo.id}}">
+    <img ng-src="{{photo.data.uri}}" >
     </li>
+    </a>
   </ul>
 
 </div>

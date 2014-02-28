@@ -13,12 +13,15 @@
     <feature name="Notification">
         <param name="android-package" value="org.apache.cordova.dialogs.Notification" />
     </feature>
+    <feature name="InAppBrowser">
+        <param name="android-package" value="org.apache.cordova.inappbrowser.InAppBrowser" />
+    </feature>
     <feature name="Media">
         <param name="android-package" value="org.apache.cordova.media.AudioHandler" />
     </feature>
     <name>Memories</name>
     <description>
-        A camera app build with phonegap, angular and onsenui.
+        A camera app build with phonegap, angularjs and fries.
     </description>
     <author email="jaroncn@gmail.com" href="http://github.com/jarontai">
         JaronTai

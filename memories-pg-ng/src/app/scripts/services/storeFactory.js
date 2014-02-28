@@ -10,7 +10,7 @@ angular.module('memoriesApp')
     this.list = angular.fromJson(data);
     this.index = this.list.length;
     this.keys = _.map(this.list, function(item) {
-      return item.id;
+      return +item.id;
     });
     this.cleanup = null;
   }
@@ -22,10 +22,9 @@ angular.module('memoriesApp')
 
   Store.prototype.add = function(data, callback) {
     if (angular.isObject(data)) {
-      var key = this.name + this.index;
-      this.list.push({'id':key, 'data': data, time: moment().format('YYYY-MM-DD hh:mm:ss')});
-      this._sync();
       this.index++;
+      this.list.push({'id': this.index, 'data': data, time: moment().format('YYYY-MM-DD hh:mm:ss')});
+      this._sync();
       callback();
     } else {
       callback(true, 'Your data must be a object!');
@@ -37,6 +36,7 @@ angular.module('memoriesApp')
   };
 
   Store.prototype.remove = function(key, callback) {
+    key = +key || 0;
     if (key && _.contains(this.keys, key)) {
       this.keys = _.remove(this.keys, function(k) {
         return key == k;

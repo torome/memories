@@ -15,7 +15,7 @@ angular.module('memoriesApp', ['ngRoute', 'ngTouch'])
 
   // routing
   $routeProvider
-    .when('/detail', {
+    .when('/detail/:photoId', {
       templateUrl: 'views/detail.html',
       controller: 'DetailCtrl'
     })
