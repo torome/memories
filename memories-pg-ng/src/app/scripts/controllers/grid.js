@@ -84,7 +84,7 @@ angular.module('memoriesApp')
     }
   }
 
-  $rootScope.$on(events.addPhoto, function(event) {
+  $rootScope.$on(events.updatePhoto, function(event) {
     updatePhotoList();
   });
 

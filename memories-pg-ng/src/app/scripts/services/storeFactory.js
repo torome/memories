@@ -48,7 +48,7 @@ angular.module('memoriesApp')
       this.index--;
       callback();
     } else {
-      callback(true, 'Your key is not valid or not exist!');
+      callback(true, 'Your key is invalid or not exist!');
     }
   };
 
