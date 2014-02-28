@@ -9,7 +9,7 @@ angular.module('memoriesApp')
   function _onBackKey() {
     var path = $location.path();
     switch (path) {
-      // when at home, must press twice to exit
+      // when at home, must press exit btn twice to exit
       case paths.home:
         if (exitCounter >= 1) {
           exitCounter = 0;

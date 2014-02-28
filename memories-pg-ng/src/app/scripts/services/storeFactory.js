@@ -3,7 +3,7 @@
 angular.module('memoriesApp')
 .factory('storeFactory', function storeFactory() {
 
-  // simple data store use localstorage
+  // simple data store using localstorage
   function Store(name) {
     this.name = name;
     var data = window.localStorage.getItem(this.name) || '[]';
@@ -28,7 +28,7 @@ angular.module('memoriesApp')
       this.index++;
       callback();
     } else {
-      callback(true, 'Your data must be a object.');
+      callback(true, 'Your data must be a object!');
     }
   };
 
