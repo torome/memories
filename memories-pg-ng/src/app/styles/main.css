@@ -1,23 +1,28 @@
 /* global */
-ul, ol { list-style-type: none;  }
-
+ul, ol { list-style-type: none; }
 .action .icon-up-button {
 	margin-right: 2px;
 }
-
 .action .icon-memories {
 	background: url('../images/icon.png') 0 0 no-repeat;
 	margin-right: 3px;
 	margin-left: 3px;
 }
-
 .ng-click-active {
 	background-color: #5ef2f9;
 }
-
 #exit-dialog .dialog-content p,
 #exit-dialog .dialog-actions a {
 	font-size: 110%;
+}
+
+/* toast */
+.toast {
+	padding: 15px 0;
+	text-align: center;
+}
+.toast p {
+	font-size: 102% !important;
 }
 
 /* shim */

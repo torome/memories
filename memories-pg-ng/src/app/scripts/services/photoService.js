@@ -3,6 +3,7 @@
 angular.module('memoriesApp')
 .factory('photoService', function photoService() {
 
+  // take photo
   function _takePhoto(callback) {
     navigator.camera.getPicture(
       function(imageURI) {

@@ -9,6 +9,7 @@ angular.module('memoriesApp')
   function _onBackKey() {
     var path = $location.path();
     switch (path) {
+      // when at home, must press twice to exit
       case paths.home:
         if (exitCounter >= 1) {
           exitCounter = 0;
@@ -19,9 +20,10 @@ angular.module('memoriesApp')
         dialogService.openExitToast(2500);
         $timeout(function() {
           exitCounter = 0;
-        }, 2500);        
+        }, 2500);
       break;
 
+      // go home
       case paths.about:
       case paths.detail:
         $location.path(paths.home);
@@ -32,6 +34,7 @@ angular.module('memoriesApp')
   }
 
   function _init() {
+    // remove the old listener, add new one
     document.removeEventListener('backbutton', onBackKey, false);
     document.addEventListener('backbutton', function() {
       $timeout(function() {

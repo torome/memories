@@ -5,6 +5,7 @@ angular.module('memoriesApp')
 
   var flags = global.flags;
 
+  // fix touch effect
   function _fixTouchEffect(selector) {
     var TOUCH_CLASS = 'ng-click-active';
     $(document).on('touchstart', selector, function(event) {
@@ -18,10 +19,12 @@ angular.module('memoriesApp')
     });
   }
 
+  // hide overflow list for old android
   function _hideOverflowList(fn) {
     jQuery('ol.action-overflow-list').removeClass('active').hide(fn);
   }
 
+  // fix menu click
   function _fixMenuClick(selector, fn) {
     function _clickFn(ev) {
       ev.preventDefault();

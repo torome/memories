@@ -4,7 +4,7 @@ angular.module('memoriesApp')
 .controller('GridCtrl', function ($scope, $rootScope, $log, $timeout, global, fixService, photoService, storeFactory) {
 
   var rootData = $rootScope.rootData;
-  var addPhotoEvent = global.events.addPhoto;
+  var events = global.events;
   var STATUS = {
     NORMAL: 'narmal',
     EDIT: 'edit'
@@ -84,7 +84,7 @@ angular.module('memoriesApp')
     }
   }
 
-  $rootScope.$on(addPhotoEvent, function(event) {
+  $rootScope.$on(events.addPhoto, function(event) {
     updatePhotoList();
   });
 

@@ -3,6 +3,7 @@
 angular.module('memoriesApp')
 .factory('storeFactory', function storeFactory() {
 
+  // simple data store use localstorage
   function Store(name) {
     this.name = name;
     var data = window.localStorage.getItem(this.name) || '[]';
