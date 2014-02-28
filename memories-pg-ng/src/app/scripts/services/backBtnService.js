@@ -8,7 +8,9 @@ angular.module('memoriesApp')
 
   function _onBackKey() {
     var path = $location.path();
-    alert(path);
+    path = path.split('/');
+    path = _.compact(path)[0] || '';
+    path = '/' + path;
     switch (path) {
       // when at home, must press exit btn twice to exit
       case paths.home:
