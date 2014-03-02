@@ -5,6 +5,9 @@ A camera app build with [phonegap](http://phonegap.com/), [angularjs](http://ang
 It's not finish yet.
 =============
 
+Click this [link](http://git.oschina.net/jarontai/memories/raw/master/Memories-debug.apk) to grap the apk file.
+
+
 Some screenshots:
 
 <table cellspacing="10" cellpadding="3">
