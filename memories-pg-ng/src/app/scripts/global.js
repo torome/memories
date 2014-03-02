@@ -14,6 +14,7 @@ angular.module('memoriesApp')
     paths: {
       home: '/',
       detail: '/detail',
+      settings: '/settings',
       about: '/about'
     }
   };

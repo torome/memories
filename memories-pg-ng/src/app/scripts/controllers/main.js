@@ -24,16 +24,13 @@ angular.module('memoriesApp')
       }
     });
   }
-  $rootScope.$on(events.takePhoto, function(event) {
-    _takePhoto();
-  });
 
   function _goHome() {
     $location.path(paths.home);
   }
   
   function _goSettings() {
-    $log.log('Click Settings');
+    $location.path(paths.settings);
   }
 
   function _edit() {
@@ -47,9 +44,8 @@ angular.module('memoriesApp')
   }
 
   function init() {
-    // process back button
     backBtnService.init();
-    
+
     // fix action bar menu for old android
     fixService.fixTouchEffect('a.toggle-spinner');
     fixService.fixMenuClick('a[href="#settings"]', function() {

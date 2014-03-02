@@ -15,16 +15,21 @@ angular.module('memoriesApp', ['ngRoute', 'ngTouch'])
 
   // routing
   $routeProvider
-    .when('/detail/:photoId', {
-      templateUrl: 'views/detail.html',
-      controller: 'DetailCtrl'
-    })
     .when('/', {
       templateUrl: photoView,
       controller: photoCtrl
     })
+    .when('/detail/:photoId', {
+      templateUrl: 'views/detail.html',
+      controller: 'DetailCtrl'
+    })
     .when('/about', {
-      templateUrl: 'views/about.html'
+      templateUrl: 'views/about.html',
+      controller: 'AboutCtrl'
+    })
+    .when('/settings', {
+      templateUrl: 'views/settings.html',
+      controller: 'SettingsCtrl'
     })
     .otherwise({
       redirectTo: '/'
