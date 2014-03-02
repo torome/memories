@@ -28,3 +28,5 @@ proguard/
 *.iws
 .idea/
 www
+
+!Memories-debug.apk
