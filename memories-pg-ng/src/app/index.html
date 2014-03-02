@@ -21,7 +21,7 @@
             <i ng-show="rootData.nav.isInner" class="icon-up-button"></i>
             <i class="icon-memories"></i>
           </a>
-          <h2 class="title">Memories <span class="subtitle">{{rootData.nav.title}}</span></h2>
+          <h2 class="title">Memories <span ng-cloak class="subtitle">{{rootData.nav.title}}</span></h2>
           <ul class="actions pull-right">
               <li class=""><a ng-click="rootFn.takePhoto()" class="action" title="Camera"><i class="icon-camera"></i></a></li>
               <li class=""><a href="#edit" class="action" title="Edit"><i class="icon-edit"></i></a></li>
@@ -84,7 +84,7 @@
     <!-- endbuild -->
     
     <!-- weinre debug -->
-    <script src="http://localhost:8080/target/target-script-min.js#anonymous"></script>
+    <!--<script src="http://localhost:8080/target/target-script-min.js#anonymous"></script>-->
 
 </body>
 </html>
