@@ -22,17 +22,17 @@ angular.module('memoriesApp')
     dialog.show();
   }
 
-  // open exit toast
-  function _openExitToast(dura) {
+  // open toast
+  function _openToast(text, dura) {
     toast = new fries.Toast({
-      content: 'Press the back key again to exit',
+      content: text || 'Press the back key again to exit',
       duration: dura || 2500
     });
   }
 
   return {
     openDialog: _openDialog,
-    openExitToast: _openExitToast
+    openToast: _openToast
   };
 
 });

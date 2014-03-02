@@ -20,7 +20,7 @@ angular.module('memoriesApp')
           return;
         }
         exitCounter++;
-        dialogService.openExitToast(2500);
+        dialogService.openToast('Press the back key again to exit', 2500);
         $timeout(function() {
           exitCounter = 0;
         }, 2500);

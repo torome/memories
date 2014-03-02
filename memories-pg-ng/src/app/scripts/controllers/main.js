@@ -4,12 +4,13 @@ angular.module('memoriesApp')
 .controller('MainCtrl', function ($window, $scope, $rootScope, $location, $log, global, backBtnService, dialogService, fixService, photoService, storeFactory) {
 
   var photoStore = storeFactory.get('photo');
+  var settingStore = storeFactory.get('settings', true);
   var events = global.events;
   var paths = global.paths;
   
   $rootScope.rootData = {
     firstTime: true,
-    nav: {}
+    nav: {},
   };
 
   function _takePhoto() {
@@ -44,6 +45,16 @@ angular.module('memoriesApp')
   }
 
   function init() {
+    // init settigs
+    settingStore.getItem(function(err, item) {
+      if (!err) {
+        $rootScope.rootData.settings = _.defaults(item, {
+          photoQuality: 75
+        });
+      }
+    });
+
+    // init back button service
     backBtnService.init();
 
     // fix action bar menu for old android
