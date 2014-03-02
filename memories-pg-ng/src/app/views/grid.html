@@ -7,7 +7,7 @@
   <ul ng-show="!fn.listEmpty()" id="photo-list" class="photo-list">
     <li ng-repeat="photo in data.photoList">
     <a ng-href="#detail/{{photo.id}}">
-    <img ng-src="{{photo.data.uri}}" >
+    <img ng-src="{{photo.uri}}" >
     </li>
     </a>
   </ul>

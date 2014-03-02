@@ -11,13 +11,15 @@ ul, ol { list-style-type: none; }
 .ng-click-active {
 	background-color: #5ef2f9;
 }
-#exit-dialog .dialog-content p,
-#exit-dialog .dialog-actions a {
-	font-size: 110%;
-}
 .empty-info {
 	margin-top: 58%;
 	text-align: center;
+	font-size: 110%;
+}
+
+/* dialog */
+#delete-dialog .dialog-content p,
+#delete-dialog .dialog-actions a {
 	font-size: 110%;
 }
 
@@ -96,4 +98,17 @@ ul, ol { list-style-type: none; }
 /* about page */
 .about {
 	padding-top: 10%;
+}
+
+/* detail page */
+.detail img {
+	width: 100%;
+	height: auto;
+}
+
+.detail .photo-time {
+	width: 100%;
+	margin: 0 auto;
+	padding: 10px 0;
+	font-size: 105%;
 }

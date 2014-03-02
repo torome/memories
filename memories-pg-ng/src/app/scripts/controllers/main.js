@@ -6,7 +6,8 @@ angular.module('memoriesApp')
   var photoStore = storeFactory.get('photo');
   var events = global.events;
   var paths = global.paths;
-  var rootData = {
+  
+  $rootScope.rootData = {
     firstTime: true,
     nav: {}
   };
@@ -16,6 +17,7 @@ angular.module('memoriesApp')
       if (!err) {
         photoStore.add({'uri': photoData}, function() {
           $rootScope.$emit(events.updatePhoto);
+          $location.path(paths.home);
         });
       } else {
         $log.error('Take photo error!' + photoData);
@@ -68,8 +70,6 @@ angular.module('memoriesApp')
     edit: _edit,
     takePhoto: _takePhoto
   };
-
-  $rootScope.rootData = rootData;    
 
   init();
   

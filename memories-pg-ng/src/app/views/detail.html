@@ -1,3 +1,7 @@
-<div class="detail">
-  Your id is : {{data.photoId}};
+<div class="detail inset">
+  <img ng-src="{{data.photo.uri}}" >
+  <p class="photo-time">Time: {{data.photo.time}}</p>
+  <div>
+    <button ng-click="fn.deletePhoto()" class="btn">Delete</button>
+  </div>
 </div>

@@ -24,6 +24,10 @@ angular.module('memoriesApp')
     }
     fixService.showMenuItem('a[href="#edit"]'); 
     updatePhotoList();
+
+    $rootScope.$on(events.updatePhoto, function(event) {
+      updatePhotoList();
+    });    
   }
 
   function updatePhotoList() {
@@ -40,7 +44,7 @@ angular.module('memoriesApp')
     return !photoList || !photoList.length;
   }
 
-  function _clickImage() {    
+  function _clickImage() {
     $log.log('_clickImage');
   }
 
@@ -83,10 +87,6 @@ angular.module('memoriesApp')
       }, 10);
     }
   }
-
-  $rootScope.$on(events.updatePhoto, function(event) {
-    updatePhotoList();
-  });
 
   $scope.fn = {
     listEmpty: _listEmpty,

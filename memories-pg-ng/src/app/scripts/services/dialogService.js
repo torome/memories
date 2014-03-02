@@ -6,9 +6,10 @@ angular.module('memoriesApp')
   var dialog, toast;
 
   // open modal dialog
-  function _openDialog(selector, okFn, cancelFn) {
+  function _openDialog(id, okFn, cancelFn) {
+    if (!id) return;
     dialog = new fries.Dialog({
-      selector: selector,
+      selector: '#'+id,
       callbackOk: function() {
         if (okFn) okFn.apply();
         this.hide();
