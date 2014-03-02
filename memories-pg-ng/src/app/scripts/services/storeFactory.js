@@ -8,11 +8,6 @@ angular.module('memoriesApp')
     this.name = name;
     var data = window.localStorage.getItem(this.name) || '[]';
     this.list = angular.fromJson(data);
-    this.counter = this.list.length;
-    this.keys = _.map(this.list, function(item) {
-      return +item.id;
-    });
-    this.cleanup = null;
   }
 
   Store.prototype._sync = function() {
@@ -22,11 +17,9 @@ angular.module('memoriesApp')
 
   Store.prototype.add = function(data, callback) {
     if (angular.isObject(data)) {
-      this.counter++;
-      data.id = this.counter;
+      data.id = new Date().getTime();
       data.time = moment().format('YYYY-MM-DD hh:mm:ss');
       this.list.push(data);
-      this.keys.push(data.id);
       this._sync();
       callback();
     } else {
@@ -41,10 +34,10 @@ angular.module('memoriesApp')
   Store.prototype.getItem = function(key, callback) {
     var itemObj;
     key = +key || 0;
-    if (key && _.contains(this.keys, key)) {
-      itemObj = _.find(this.list, function(item) {
-        return key == item.id;
-      });
+    itemObj = _.find(this.list, function(item) {
+      return key == item.id;
+    });
+    if (itemObj) {
       callback(null, itemObj);
     } else {
       callback(true, 'Your key is invalid or not exist!');
@@ -52,15 +45,12 @@ angular.module('memoriesApp')
   };
 
   Store.prototype.remove = function(key, callback) {
+    var removedItems;
     key = +key || 0;
-    if (key && _.contains(this.keys, key)) {
-      _.remove(this.keys, function(k) {
-        return key == k;
-      });
-      _.remove(this.list, function(item) {
-        return key == item.id;
-      });       
-      this.counter--;
+    removedItems = _.remove(this.list, function(item) {
+      return key == item.id;
+    });
+    if (removedItems && removedItems.length) {
       this._sync();
       callback();
     } else {
